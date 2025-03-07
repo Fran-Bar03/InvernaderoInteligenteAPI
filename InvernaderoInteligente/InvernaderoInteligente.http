@@ -1,0 +1,6 @@
+@InvernaderoInteligente_HostAddress = http://localhost:5148
+
+GET {{InvernaderoInteligente_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
