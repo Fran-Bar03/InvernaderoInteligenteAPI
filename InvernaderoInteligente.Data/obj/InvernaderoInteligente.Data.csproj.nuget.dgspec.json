@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hachi\\source\\repos\\InvernaderoInteligente\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {}
+    "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hachi\\source\\repos\\InvernaderoInteligente\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {
+    "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hachi\\source\\repos\\InvernaderoInteligente\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
         "projectName": "InvernaderoInteligente.Data",
-        "projectPath": "C:\\Users\\Hachi\\source\\repos\\InvernaderoInteligente\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
-        "packagesPath": "C:\\Users\\Hachi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hachi\\source\\repos\\InvernaderoInteligente\\InvernaderoInteligente.Data\\obj\\",
+        "projectPath": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Visual Studio 2022 SDK\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hachi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

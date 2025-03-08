@@ -12,7 +12,7 @@ namespace InvernaderoInteligente.Model
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int Usuario_id { get; set; }
+        public string? UsuarioId { get; set; }
 
         [BsonElement("Nombre")]
         public string? Nombre { get;set; }
@@ -27,10 +27,7 @@ namespace InvernaderoInteligente.Model
         public int Rol {  get; set; }
 
         [BsonElement("Inverndaeros")]
-
-        public List<ObjectId> Invernaderos { get; set; }
-
-        
-
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string>? Invernaderos { get; set; } = new List<string>();
     } 
 }

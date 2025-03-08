@@ -10,8 +10,9 @@ namespace InvernaderoInteligente.Model
 {
     public class InvernaderoModel
     {
+        [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int Invernadero_id { get; set; }
+        public string? InvernaderoId { get; set; }
 
         [BsonElement("Nombre")]
         public string? Nombre { get; set; }
@@ -35,10 +36,12 @@ namespace InvernaderoInteligente.Model
         public decimal MaxHumedad { get;set; }
 
         [BsonElement("Usuarios")]
-        public List<ObjectId> Usuarios { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string> Usuarios { get; set; } = new List<string>();
 
         [BsonElement("Sensores")]
-        public List<Sensor> Sensores { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string> Sensores { get; set; } = new List<string>();
 
     }
 }

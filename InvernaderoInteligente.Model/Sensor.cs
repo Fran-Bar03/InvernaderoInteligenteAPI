@@ -10,8 +10,9 @@ namespace InvernaderoInteligente.Model
 {
     public class Sensor
     {
+        [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int Sensor_id { get; set; }
+        public string? SensorId { get; set; }
 
         [BsonElement("Tipo")]
         public string? Tipo { get; set; }

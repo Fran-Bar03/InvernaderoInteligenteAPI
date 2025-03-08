@@ -125,23 +125,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Hachi\\.nuget\\packages\\": {},
-    "D:\\Visual Studio 2022 SDK\\NuGetPackages": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hachi\\source\\repos\\InvernaderoInteligente\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj",
       "projectName": "InvernaderoInteligente.Model",
-      "projectPath": "C:\\Users\\Hachi\\source\\repos\\InvernaderoInteligente\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj",
-      "packagesPath": "C:\\Users\\Hachi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hachi\\source\\repos\\InvernaderoInteligente\\InvernaderoInteligente.Model\\obj\\",
+      "projectPath": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Visual Studio 2022 SDK\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Hachi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
