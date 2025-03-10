@@ -1,23 +1,111 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {}
+    "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {
+    "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
         "projectName": "InvernaderoInteligente.Data",
-        "projectPath": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\obj\\",
+        "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
+        "packagesPath": "C:\\Users\\Hachi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Visual Studio 2022 SDK\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Hachi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
+                "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[3.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj",
+        "projectName": "InvernaderoInteligente.Model",
+        "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj",
+        "packagesPath": "C:\\Users\\Hachi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Visual Studio 2022 SDK\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Hachi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -51,19 +139,7 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "BCrypt.Net-Next": {
-              "target": "Package",
-              "version": "[4.0.3, )"
-            },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[8.0.13, )"
-            },
-            "Microsoft.Extensions.Options": {
-              "target": "Package",
-              "version": "[9.0.2, )"
-            },
-            "MongoDB.Driver": {
+            "MongoDB.Bson": {
               "target": "Package",
               "version": "[3.2.1, )"
             }

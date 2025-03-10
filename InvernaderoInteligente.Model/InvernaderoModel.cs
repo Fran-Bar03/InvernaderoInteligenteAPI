@@ -24,16 +24,16 @@ namespace InvernaderoInteligente.Model
         public string? TipoPlanta { get; set; }
 
         [BsonElement("MinTemperatura")]
-        public decimal MinTemperatura { get; set; }
+        public decimal? MinTemperatura { get; set; }
 
         [BsonElement("MaxTemperatura")]
-        public decimal MaxTemperatura { get;set; }
+        public decimal? MaxTemperatura { get;set; }
 
         [BsonElement("MinHumedad")]
-        public decimal MinHumedad { get; set; }
+        public decimal? MinHumedad { get; set; }
 
         [BsonElement("MaxHumedad")]
-        public decimal MaxHumedad { get;set; }
+        public decimal? MaxHumedad { get;set; }
 
         [BsonElement("Usuarios")]
         [BsonRepresentation(BsonType.ObjectId)]

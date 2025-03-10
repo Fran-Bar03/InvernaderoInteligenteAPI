@@ -405,6 +405,19 @@
         "runtime": {
           "lib/net7.0/ZstdSharp.dll": {}
         }
+      },
+      "InvernaderoInteligente.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "MongoDB.Bson": "3.2.1"
+        },
+        "compile": {
+          "bin/placeholder/InvernaderoInteligente.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InvernaderoInteligente.Model.dll": {}
+        }
       }
     }
   },
@@ -1097,34 +1110,40 @@
         "zstdsharp.port.0.7.3.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
+    },
+    "InvernaderoInteligente.Model/1.0.0": {
+      "type": "project",
+      "path": "../InvernaderoInteligente.Model/InvernaderoInteligente.Model.csproj",
+      "msbuildProject": "../InvernaderoInteligente.Model/InvernaderoInteligente.Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "BCrypt.Net-Next >= 4.0.3",
+      "InvernaderoInteligente.Model >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.13",
       "Microsoft.Extensions.Options >= 9.0.2",
       "MongoDB.Driver >= 3.2.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Hachi\\.nuget\\packages\\": {},
+    "D:\\Visual Studio 2022 SDK\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
       "projectName": "InvernaderoInteligente.Data",
-      "projectPath": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Source\\Repos\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\obj\\",
+      "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
+      "packagesPath": "C:\\Users\\Hachi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "D:\\Visual Studio 2022 SDK\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Hachi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1139,7 +1158,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
+              "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
