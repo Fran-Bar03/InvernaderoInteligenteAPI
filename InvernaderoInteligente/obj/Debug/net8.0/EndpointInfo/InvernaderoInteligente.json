@@ -271,7 +271,7 @@
         }
       }
     },
-    "/api/Usuario/CambiarContraseña/{correo}": {
+    "/api/Usuario/CambiarContrasena/{correo}": {
       "put": {
         "tags": [
           "Usuario"

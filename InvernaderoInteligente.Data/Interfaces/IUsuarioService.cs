@@ -14,8 +14,6 @@ namespace InvernaderoInteligente.Data.Interfaces
 
         public Task<UsuarioModel> ActualizarUsuario(UsuarioModel actualizarusuario);
 
-        public Task<List<UsuarioModel>> MostrarUsuarios();
-
         public Task<UsuarioModel> BuscarUsuario(string correo);
 
         public Task BorrarUsuario(string correo);

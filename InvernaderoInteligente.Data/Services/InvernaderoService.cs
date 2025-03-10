@@ -8,19 +8,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
 
 namespace InvernaderoInteligente.Data.Services
 {
     public class InvernaderoService : IInvernaderoService
     {
-        private readonly IMongoClient _mongoClient;
-        private readonly IMongoDatabase _database;
         private readonly IMongoCollection<InvernaderoModel> _invernaderos;
+        private readonly MongoClient _Client;
+        private readonly ConfiguracionMongo _ConfiguracionMongo;
 
-        public InvernaderoService(IMongoClient mongoClient, IOptions<ConfiguracionMongo> config)
+    public InvernaderoService(MongoClient mongoClient, IOptions<ConfiguracionMongo> MongoConfig)
         {
-            _mongoClient = mongoClient;
-            _database = _mongoClient.GetDatabase(config.Value.DataBase);
+            _Client = mongoClient;
+            _ConfiguracionMongo = MongoConfig.Value ?? throw new ArgumentException (nameof (MongoConfig));
+
+            var MongoDB = _Client.GetDatabase (_ConfiguracionMongo.DataBase);
+            _invernaderos = MongoDB.GetCollection<InvernaderoModel> ("Invernadero");
+            
         }
 
         #region AgregarInvernadero

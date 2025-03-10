@@ -25,9 +25,9 @@ namespace InvernaderoInteligente.Controllers
         // GET: api/<UsuarioController>
         //[Authorize]
         [HttpGet("MostrarUsuarios")]
-        public async Task<IActionResult> MostrarUsuarios()
+        public async Task<IActionResult> FindAll()
         {
-            var usuario = await _usuarioService.MostrarUsuarios();
+            var usuario = await _usuarioService.FindAll();
             return Ok(usuario);
         }
 
@@ -62,7 +62,7 @@ namespace InvernaderoInteligente.Controllers
         }
 
 
-        [HttpPut("CambiarContraseña/{correo}")]
+        [HttpPut("CambiarContrasena/{correo}")]
 
         public async Task<IActionResult> CambiarContrasena(string correo,string contrasena)
         {

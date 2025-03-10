@@ -151,7 +151,7 @@
   {
     "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
     "Method": "CambiarContrasena",
-    "RelativePath": "api/Usuario/CambiarContrase\u00F1a/{correo}",
+    "RelativePath": "api/Usuario/CambiarContrasena/{correo}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -187,7 +187,7 @@
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
-    "Method": "MostrarUsuarios",
+    "Method": "FindAll",
     "RelativePath": "api/Usuario/MostrarUsuarios",
     "HttpMethod": "GET",
     "IsController": true,

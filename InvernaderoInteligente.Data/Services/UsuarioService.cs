@@ -44,11 +44,12 @@ namespace InvernaderoInteligente.Data.Services
                 throw new ArgumentException("La contraseña es obligatoria.");
 
 
-            crearusuario.Contraseña = BCrypt.Net.BCrypt.HashPassword(crearusuario.Contraseña);
+            crearusuario.Contraseña = BCrypt.Net.BCrypt.EnhancedHashPassword(crearusuario.Contraseña);
             await _usuarios.InsertOneAsync(crearusuario);
             return crearusuario;
         }
         #endregion
+
 
  
         #region ActualizarUsuario
@@ -70,6 +71,7 @@ namespace InvernaderoInteligente.Data.Services
         }
 
         #endregion
+
         
 
         #region MostrarUsuarios
@@ -77,6 +79,7 @@ namespace InvernaderoInteligente.Data.Services
         public async Task<List<UsuarioModel>> FindAll() => await _usuarios.Find(_ => true).ToListAsync();
 
         #endregion
+
 
 
         #region BuscarUsuario
@@ -90,6 +93,7 @@ namespace InvernaderoInteligente.Data.Services
         #endregion
 
 
+
         #region BorrarUsuario
         
         public async Task BorrarUsuario(string correo)
@@ -100,30 +104,25 @@ namespace InvernaderoInteligente.Data.Services
         }
         
         #endregion
+
         
 
         #region CambiarContraseña
 
-        public async Task CambiarContraseña(string correo, string contrasena)
+        public async Task CambiarContrasena(string correo, string contrasena)
         {
-            string PassHashed = BCrypt.Net.BCrypt.HashPassword(contrasena);
+            string PassHashed = BCrypt.Net.BCrypt.EnhancedHashPassword(contrasena);
             var Filtro = Builders<UsuarioModel>.Filter.Eq(c => c.Email, correo);
             var Actualizarr = Builders<UsuarioModel>.Update.Set(p => p.Contraseña, contrasena);
 
             await _usuarios.UpdateOneAsync(Filtro, Actualizarr);
         }
 
-        public Task<List<UsuarioModel>> MostrarUsuarios()
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public Task CambiarContrasena(string correo, string contrasena)
-        {
-            throw new NotImplementedException();
-        }
 
         #endregion
+
 
     }
 }

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\InvernaderoInteligente.Data\InvernaderoInteligente.Data.csproj" />
+    <ProjectReference Include="..\InvernaderoInteligente.Model\InvernaderoInteligente.Model.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1127,23 +1127,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Hachi\\.nuget\\packages\\": {},
-    "D:\\Visual Studio 2022 SDK\\NuGetPackages": {}
+    "C:\\Users\\Ju4nM\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Ju4nM\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
       "projectName": "InvernaderoInteligente.Data",
-      "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
-      "packagesPath": "C:\\Users\\Hachi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\obj\\",
+      "projectPath": "C:\\Users\\Ju4nM\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
+      "packagesPath": "C:\\Users\\Ju4nM\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ju4nM\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Visual Studio 2022 SDK\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Hachi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ju4nM\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1152,15 +1152,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
-              "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj"
+            "C:\\Users\\Ju4nM\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
+              "projectPath": "C:\\Users\\Ju4nM\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj"
             }
           }
         }

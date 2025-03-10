@@ -9,6 +9,7 @@
       "InvernaderoInteligente/1.0.0": {
         "dependencies": {
           "InvernaderoInteligente.Data": "1.0.0",
+          "InvernaderoInteligente.Model": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.13",
           "MongoDB.Driver": "3.2.1",
           "Swashbuckle.AspNetCore": "6.6.2"
