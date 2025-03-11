@@ -32,7 +32,7 @@ namespace InvernaderoInteligente.Controllers
         }
 
         // GET api/<UsuarioController>/5
-        [HttpGet("Email/{correo}")]
+        [HttpGet("BuscarUsuario/{correo}")]
         public async Task<IActionResult> BuscarUsuario(string correo)
         {
             var usuario = await _usuarioService.BuscarUsuario(correo);
@@ -40,7 +40,7 @@ namespace InvernaderoInteligente.Controllers
         }
 
         // POST api/<UsuarioController>
-        [HttpPost("Registro")]
+        [HttpPost("RegistrarUsuario")]
         public async Task<IActionResult> CrearUsuario([FromBody]UsuarioModel usuario)
         {
             if (usuario == null)
@@ -53,12 +53,12 @@ namespace InvernaderoInteligente.Controllers
         }
 
         // PUT api/<UsuarioController>/5
-        [Authorize]
-        [HttpPut("Actualizar")]
+        //[Authorize]
+        [HttpPut("ActualizarUsuario")]
         public async Task<IActionResult> ActualizarUsuario(UsuarioModel usuariomodel)
         {
             await _usuarioService.ActualizarUsuario(usuariomodel);
-            return Ok();
+            return Ok(new{Mensaje = "Datos actualizados correctamente" });
         }
 
 
@@ -67,17 +67,17 @@ namespace InvernaderoInteligente.Controllers
         public async Task<IActionResult> CambiarContrasena(string correo,string contrasena)
         {
             await _usuarioService.CambiarContrasena(correo,contrasena);
-            return Ok();
+            return Ok(new {Mensaje = "Contraseña actualizada correctamente"});
         }
 
 
         // DELETE api/<UsuarioController>/5
-        [Authorize]
+        //[Authorize]
         [HttpDelete("{correo}")]
         public async Task<IActionResult> BorrarUsuario(string correo)
         {
             await _usuarioService.BorrarUsuario(correo);
-            return Ok();
+            return Ok(new {Mensaje = "Usuario eliminado correctamente"});
         }
     }
 }

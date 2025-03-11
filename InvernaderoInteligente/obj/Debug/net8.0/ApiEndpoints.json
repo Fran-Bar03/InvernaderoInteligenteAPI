@@ -1,8 +1,92 @@
 [
   {
     "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
+    "Method": "ActualizarInvernadero",
+    "RelativePath": "api/Invernadero/ActualizarInvernadero",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "invernaderomodel",
+        "Type": "InvernaderoInteligente.Model.InvernaderoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
+    "Method": "BuscarInvernadero",
+    "RelativePath": "api/Invernadero/BuscarInvernadero/{Nombre}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Nombre",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
+    "Method": "CrearInvernadero",
+    "RelativePath": "api/Invernadero/CrearInvernadero",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agregarinvernadero",
+        "Type": "InvernaderoInteligente.Model.InvernaderoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
+    "Method": "Eliminarinvernadero",
+    "RelativePath": "api/Invernadero/EliminarInvernadero{Nombre}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Nombre",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
+    "Method": "GetAll",
+    "RelativePath": "api/Invernadero/ListarInvernaderos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[InvernaderoInteligente.Model.InvernaderoModel, InvernaderoInteligente.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
     "Method": "Post",
-    "RelativePath": "api/Invernadero",
+    "RelativePath": "api/Sensor",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -22,9 +106,9 @@
     ]
   },
   {
-    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
+    "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
     "Method": "Get",
-    "RelativePath": "api/Invernadero/{id}",
+    "RelativePath": "api/Sensor/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -48,9 +132,9 @@
     ]
   },
   {
-    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
+    "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
     "Method": "Put",
-    "RelativePath": "api/Invernadero/{id}",
+    "RelativePath": "api/Sensor/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -75,9 +159,9 @@
     ]
   },
   {
-    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
+    "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
     "Method": "Delete",
-    "RelativePath": "api/Invernadero/{id}",
+    "RelativePath": "api/Sensor/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -97,24 +181,14 @@
     ]
   },
   {
-    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
-    "Method": "GetAll",
-    "RelativePath": "api/Invernadero/ListarInvernaderos",
+    "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
+    "Method": "MostrarSensores",
+    "RelativePath": "api/Sensor/MostarSensores",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[InvernaderoInteligente.Model.InvernaderoModel, InvernaderoInteligente.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
@@ -135,7 +209,7 @@
   {
     "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
     "Method": "ActualizarUsuario",
-    "RelativePath": "api/Usuario/Actualizar",
+    "RelativePath": "api/Usuario/ActualizarUsuario",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -143,6 +217,22 @@
       {
         "Name": "usuariomodel",
         "Type": "InvernaderoInteligente.Model.UsuarioModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
+    "Method": "BuscarUsuario",
+    "RelativePath": "api/Usuario/BuscarUsuario/{correo}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "correo",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -171,22 +261,6 @@
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
-    "Method": "BuscarUsuario",
-    "RelativePath": "api/Usuario/Email/{correo}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "correo",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
     "Method": "FindAll",
     "RelativePath": "api/Usuario/MostrarUsuarios",
     "HttpMethod": "GET",
@@ -198,7 +272,7 @@
   {
     "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
     "Method": "CrearUsuario",
-    "RelativePath": "api/Usuario/Registro",
+    "RelativePath": "api/Usuario/RegistrarUsuario",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -210,26 +284,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "InvernaderoInteligente.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[InvernaderoInteligente.WeatherForecast, InvernaderoInteligente, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
   }
 ]

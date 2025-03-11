@@ -29,28 +29,44 @@ namespace InvernaderoInteligente.Controllers
         }
 
         // GET api/<InvernaderoController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("BuscarInvernadero/{Nombre}")]
+        public async Task<IActionResult> BuscarInvernadero (string Nombre)
         {
-            return "value";
+           var Invernadero = await _invernaderoService.BuscarInvernadero(Nombre);
+            return Ok(Invernadero);
         }
 
         // POST api/<InvernaderoController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("CrearInvernadero")]
+        public async Task<IActionResult> CrearInvernadero([FromBody] InvernaderoModel agregarinvernadero)
         {
+            if (agregarinvernadero == null)
+            {
+                return BadRequest();
+            }
+
+            var Resultado = await _invernaderoService.AgregarInvernadero(agregarinvernadero);
+            return Ok(Resultado);
+
         }
+
 
         // PUT api/<InvernaderoController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("ActualizarInvernadero")]
+        public async Task<IActionResult> ActualizarInvernadero(InvernaderoModel invernaderomodel) 
         {
+            await _invernaderoService.ActualizarInvernadero(invernaderomodel);
+            return Ok();
         }
+        
+
 
         // DELETE api/<InvernaderoController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("EliminarInvernadero{Nombre}")]
+        public async Task<IActionResult> Eliminarinvernadero(string Nombre) 
         {
+            await _invernaderoService.EliminarInvernadero(Nombre);
+            return Ok(new {Mensaje = "Invernadero eliminado correctamente " });
         }
     }
 }

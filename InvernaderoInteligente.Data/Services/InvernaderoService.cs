@@ -29,7 +29,7 @@ namespace InvernaderoInteligente.Data.Services
         }
 
         #region AgregarInvernadero
-        public async Task<InvernaderoModel> AgregarInvernadero(InvernaderoModel agregarinvernadero)
+        public async Task<InvernaderoModel?> AgregarInvernadero(InvernaderoModel agregarinvernadero)
         {
             if (agregarinvernadero == null)
                 throw new ArgumentNullException(nameof(agregarinvernadero), "El invernadero no puede ser nulo.");
@@ -43,18 +43,6 @@ namespace InvernaderoInteligente.Data.Services
             if (string.IsNullOrWhiteSpace(agregarinvernadero.TipoPlanta))
                 throw new ArgumentException("El campo es obligatorio.");
 
-            if (!agregarinvernadero.MinTemperatura.HasValue)
-                throw new ArgumentException("Introduzca un valor válido.");
-
-            if (agregarinvernadero.MaxTemperatura.HasValue)
-                throw new ArgumentException("Introduzca un valor válido.");
-
-            if (agregarinvernadero.MinHumedad.HasValue)
-                throw new ArgumentException("Introduzca un valor válido.");
-
-            if (agregarinvernadero.MaxHumedad.HasValue)
-                throw new ArgumentException("Introduzca un valor válido.");
-
 
             await _invernaderos.InsertOneAsync(agregarinvernadero);
             return agregarinvernadero;
@@ -62,7 +50,7 @@ namespace InvernaderoInteligente.Data.Services
         #endregion
 
         #region Actualizar Invernadero
-        public async Task<InvernaderoModel> ActualizarInvernadero(InvernaderoModel actualizarinvernadero)
+        public async Task<InvernaderoModel?> ActualizarInvernadero(InvernaderoModel actualizarinvernadero)
         {
             var filtro = Builders<InvernaderoModel>.Filter.Eq(i => i.InvernaderoId, actualizarinvernadero.InvernaderoId);
             var result = await _invernaderos.ReplaceOneAsync(filtro, actualizarinvernadero);
@@ -75,20 +63,20 @@ namespace InvernaderoInteligente.Data.Services
         }
         #endregion
 
-        #region Listar Invernaderos
-        public async Task<List<InvernaderoModel>> ListarInvernaderos() => await _invernaderos.Find(a => true).ToListAsync();
+        #region ListarInvernaderos
+        public async Task<List<InvernaderoModel>> ListarInvernaderos() =>  await _invernaderos.Find(a => true).ToListAsync();
         #endregion
 
-        #region Buscar Invernadero por Nombre
-        public async Task<InvernaderoModel> BuscarPorNombre(string nombre)
+        #region BuscarInvernadero 
+        public async Task<InvernaderoModel> BuscarInvernadero(string Nombre)
         {
-            var filtro = Builders<InvernaderoModel>.Filter.Eq(i => i.Nombre, nombre);
-            return await _invernaderos.Find(filtro).FirstAsync();
+            var Filtro = Builders<InvernaderoModel>.Filter.Eq(i => i.Nombre, Nombre);
+            return await _invernaderos.Find(Filtro).FirstOrDefaultAsync();
         }
         #endregion
 
-        #region Eliminar Invernadero por Nombre
-        public async Task<InvernaderoModel> EliminarPorNombre(string nombre)
+        #region EliminarInvernadero 
+        public async Task<InvernaderoModel> EliminarInvernadero(string nombre)
         {
             var filtro = Builders<InvernaderoModel>.Filter.Eq(i => i.Nombre, nombre);
             var invernaderoEliminado = await _invernaderos.FindOneAndDeleteAsync(filtro);

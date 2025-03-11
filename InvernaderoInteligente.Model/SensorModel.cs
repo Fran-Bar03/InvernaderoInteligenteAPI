@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InvernaderoInteligente.Model
 {
-    public class Sensor
+    public class SensorModel
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

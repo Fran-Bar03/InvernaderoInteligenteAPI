@@ -111,9 +111,10 @@ namespace InvernaderoInteligente.Data.Services
 
         public async Task CambiarContrasena(string correo, string contrasena)
         {
-            string PassHashed = BCrypt.Net.BCrypt.EnhancedHashPassword(contrasena);
+            
             var Filtro = Builders<UsuarioModel>.Filter.Eq(c => c.Email, correo);
             var Actualizarr = Builders<UsuarioModel>.Update.Set(p => p.Contraseña, contrasena);
+            string PassHashed = BCrypt.Net.BCrypt.EnhancedHashPassword(contrasena);
 
             await _usuarios.UpdateOneAsync(Filtro, Actualizarr);
         }

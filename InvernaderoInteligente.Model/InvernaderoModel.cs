@@ -37,11 +37,11 @@ namespace InvernaderoInteligente.Model
 
         [BsonElement("Usuarios")]
         [BsonRepresentation(BsonType.ObjectId)]
-        public List<string> Usuarios { get; set; } = new List<string>();
+        public List<string>? Usuarios { get; set; } = new List<string>();
 
         [BsonElement("Sensores")]
         [BsonRepresentation(BsonType.ObjectId)]
-        public List<string> Sensores { get; set; } = new List<string>();
+        public List<string>? Sensores { get; set; } = new List<string>();
 
     }
 }
