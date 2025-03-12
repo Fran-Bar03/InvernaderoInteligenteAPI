@@ -33,9 +33,13 @@ builder.Services.AddScoped<IInvernaderoService, InvernaderoService>();
 
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
+builder.Services.AddScoped<ISensorService, SensorService>();
+
 builder.Services.AddScoped<UsuarioService>();
 
 builder.Services.AddScoped<InvernaderoService>();
+
+builder.Services.AddScoped<SensorService>();
 
 
 

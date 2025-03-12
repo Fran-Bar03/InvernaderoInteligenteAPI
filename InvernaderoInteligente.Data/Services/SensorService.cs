@@ -44,6 +44,7 @@ namespace InvernaderoInteligente.Data.Services
             var Filtro = Builders<SensorModel>.Filter.Eq(t => t.Tipo, Tipo);
             return await _sensores.Find(Filtro).FirstAsync();
         }
+
         #endregion
 
 

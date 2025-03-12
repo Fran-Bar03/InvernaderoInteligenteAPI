@@ -73,7 +73,7 @@ namespace InvernaderoInteligente.Controllers
 
         // DELETE api/<UsuarioController>/5
         //[Authorize]
-        [HttpDelete("{correo}")]
+        [HttpDelete("BorrarUsuario/{correo}")]
         public async Task<IActionResult> BorrarUsuario(string correo)
         {
             await _usuarioService.BorrarUsuario(correo);

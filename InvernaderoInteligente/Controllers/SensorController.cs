@@ -29,28 +29,39 @@ namespace InvernaderoInteligente.Controllers
         }
 
         // GET api/<SensorController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("BuscarSensor/{Tipo}")]
+        public async Task <IActionResult> BuscarSensor(string Tipo)
         {
-            return "value";
+            var Sensor = await _sensorService.BuscarSensor(Tipo);
+            return Ok(Sensor);
         }
 
         // POST api/<SensorController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("AgregarSensor")]
+        public async Task<IActionResult> AgregarSensor([FromBody] SensorModel sensor)
         {
+            if (sensor == null)
+            {
+                return BadRequest();
+            }
+
+            var Resultado = await _sensorService.AgregarSensor(sensor);
+            return Ok(Resultado);
+
         }
 
         // PUT api/<SensorController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //[HttpPut("{id}")]
+       // public void Put(int id, [FromBody] string value)
+       // {
+        //}
 
         // DELETE api/<SensorController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("EliminarSensor{Tipo}")]
+        public async Task<IActionResult> EliminarUsuario(string Tipo)
         {
+            await _sensorService.EliminarSensor(Tipo);
+            return Ok(new {Mensaje = "Sensor eliminado correctamente"});
         }
     }
 }

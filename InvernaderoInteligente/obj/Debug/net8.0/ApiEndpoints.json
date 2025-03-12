@@ -85,100 +85,51 @@
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
-    "Method": "Post",
-    "RelativePath": "api/Sensor",
+    "Method": "AgregarSensor",
+    "RelativePath": "api/Sensor/AgregarSensor",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "value",
-        "Type": "System.String",
+        "Name": "sensor",
+        "Type": "InvernaderoInteligente.Model.SensorModel",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
-    "Method": "Get",
-    "RelativePath": "api/Sensor/{id}",
+    "Method": "BuscarSensor",
+    "RelativePath": "api/Sensor/BuscarSensor/{Tipo}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
-    "Method": "Put",
-    "RelativePath": "api/Sensor/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "value",
+        "Name": "Tipo",
         "Type": "System.String",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
-    "Method": "Delete",
-    "RelativePath": "api/Sensor/{id}",
+    "Method": "EliminarUsuario",
+    "RelativePath": "api/Sensor/EliminarSensor{Tipo}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
+        "Name": "Tipo",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
@@ -192,22 +143,6 @@
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
-    "Method": "BorrarUsuario",
-    "RelativePath": "api/Usuario/{correo}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "correo",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
     "Method": "ActualizarUsuario",
     "RelativePath": "api/Usuario/ActualizarUsuario",
     "HttpMethod": "PUT",
@@ -217,6 +152,22 @@
       {
         "Name": "usuariomodel",
         "Type": "InvernaderoInteligente.Model.UsuarioModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
+    "Method": "BorrarUsuario",
+    "RelativePath": "api/Usuario/BorrarUsuario/{correo}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "correo",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
