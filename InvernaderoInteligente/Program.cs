@@ -2,9 +2,41 @@ using InvernaderoInteligente.Data;
 using InvernaderoInteligente.Data.Interfaces;
 using InvernaderoInteligente.Data.Services;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddAuthentication ("Bearer")
+   .AddJwtBearer ("Bearer", options => {
+     options.RequireHttpsMetadata = false;
+
+     var JTW = builder.Configuration["Jwt.secret"]!;
+
+     SymmetricSecurityKey issuersigningkey = new SymmetricSecurityKey (Encoding.UTF8.GetBytes (JTW));
+
+     options.TokenValidationParameters = new TokenValidationParameters {
+
+       ValidateIssuer = false,
+       ValidateAudience = false,
+       ValidateLifetime = true,
+       ValidateIssuerSigningKey = true,
+
+       IssuerSigningKey = issuersigningkey,
+
+       LifetimeValidator = (DateTime? _, DateTime? expires, SecurityToken _, TokenValidationParameters _) => {
+         return expires.HasValue && expires > DateTime.UtcNow;
+       }
+
+
+     };
+   });
+
+
+
+
 
 // Add services to the container.
 

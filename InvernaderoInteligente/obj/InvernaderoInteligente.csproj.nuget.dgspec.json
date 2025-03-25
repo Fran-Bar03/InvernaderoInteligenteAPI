@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\InvernaderoInteligente.csproj": {}
+    "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\InvernaderoInteligente.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {
+    "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
         "projectName": "InvernaderoInteligente.Data",
-        "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
-        "packagesPath": "C:\\Users\\Hachi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\obj\\",
+        "projectPath": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj",
+        "packagesPath": "C:\\Users\\Ju4nM\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Visual Studio 2022 SDK\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hachi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ju4nM\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,8 +33,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
-                "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj"
+              "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
+                "projectPath": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj"
               }
             }
           }
@@ -92,20 +92,20 @@
         }
       }
     },
-    "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
+    "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj",
+        "projectUniqueName": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj",
         "projectName": "InvernaderoInteligente.Model",
-        "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj",
-        "packagesPath": "C:\\Users\\Hachi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\obj\\",
+        "projectPath": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj",
+        "packagesPath": "C:\\Users\\Ju4nM\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Visual Studio 2022 SDK\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hachi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ju4nM\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -164,20 +164,20 @@
         }
       }
     },
-    "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\InvernaderoInteligente.csproj": {
+    "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\InvernaderoInteligente.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\InvernaderoInteligente.csproj",
+        "projectUniqueName": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\InvernaderoInteligente.csproj",
         "projectName": "InvernaderoInteligente",
-        "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\InvernaderoInteligente.csproj",
-        "packagesPath": "C:\\Users\\Hachi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\obj\\",
+        "projectPath": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\InvernaderoInteligente.csproj",
+        "packagesPath": "C:\\Users\\Ju4nM\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Visual Studio 2022 SDK\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hachi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ju4nM\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -193,11 +193,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {
-                "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj"
+              "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj": {
+                "projectPath": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj"
               },
-              "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
-                "projectPath": "C:\\Users\\Hachi\\OneDrive\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj"
+              "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj": {
+                "projectPath": "C:\\Users\\Ju4nM\\Documents\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj"
               }
             }
           }
