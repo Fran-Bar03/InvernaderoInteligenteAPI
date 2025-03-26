@@ -13,7 +13,7 @@ builder.Services.AddAuthentication ("Bearer")
    .AddJwtBearer ("Bearer", options => {
      options.RequireHttpsMetadata = false;
 
-     var JTW = builder.Configuration["Jwt.secret"]!;
+     var JTW = builder.Configuration["Jwt.Secret"]!;
 
      SymmetricSecurityKey issuersigningkey = new SymmetricSecurityKey (Encoding.UTF8.GetBytes (JTW));
 
@@ -90,6 +90,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseAuthentication();
 
 app.MapControllers();
 
