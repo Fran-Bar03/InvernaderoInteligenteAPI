@@ -245,8 +245,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "usuario",
-        "Type": "InvernaderoInteligente.Model.UsuarioModel",
+        "Name": "crearusuariodto",
+        "Type": "InvernaderoInteligente.Data.DTOs.CrearUsuarioDTO",
         "IsRequired": true
       }
     ],

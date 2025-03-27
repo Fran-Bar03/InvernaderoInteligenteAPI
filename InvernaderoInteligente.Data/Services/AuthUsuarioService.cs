@@ -22,13 +22,10 @@ namespace InvernaderoInteligente.Data.Services
 
     public AuthUsuarioService(IConfiguration configuration) 
     {
-      _secret = configuration["Jwt.Secret"]!;
-      _issuer = configuration["Jwt.issuer"]!;
-      _expirationminutes = configuration.GetValue<int> ("Jwt.expirationminutes", 30);
+      _secret = configuration["Jwt:Secret"]!;
+      _issuer = configuration["Jwt:issuer"]!;
+      //_expirationminutes = configuration.GetValue<int> ("Jwt.expirationminutes", 30);
     }
-
-
-
 
     public string GenerarToken (UsuarioModel usuario) 
     {
@@ -56,7 +53,7 @@ namespace InvernaderoInteligente.Data.Services
         issuer: _issuer,
         audience: _audience,
         claims: Claims,
-        expires: DateTime.UtcNow.AddMinutes (_expirationminutes),
+        expires: DateTime.UtcNow.AddMinutes(30),
         signingCredentials: Credential
         );
 
@@ -64,8 +61,7 @@ namespace InvernaderoInteligente.Data.Services
       //Aqui creamos el token como string
 
       var TokenHandler = new JwtSecurityTokenHandler ();
-      return TokenHandler.WriteToken (Token);
-
+      return TokenHandler.WriteToken(Token);
     }
     
 

@@ -1,4 +1,6 @@
-﻿using InvernaderoInteligente.Data.Interfaces;
+﻿using BCrypt.Net;
+using InvernaderoInteligente.Data.DTOs;
+using InvernaderoInteligente.Data.Interfaces;
 using InvernaderoInteligente.Model;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -12,49 +14,49 @@ using System.Text;
 using System.Threading.Tasks;
 using ZstdSharp.Unsafe;
 
-namespace InvernaderoInteligente.Data.Services 
-{
-    public class UsuarioService : IUsuarioService 
-    {
+namespace InvernaderoInteligente.Data.Services {
+  public class UsuarioService : IUsuarioService {
     private readonly IMongoCollection<UsuarioModel> _usuarios;
     private ConfiguracionMongo _configuracionMongo;
     private MongoClient _cliente;
     private readonly AuthUsuarioService _authUsuarioService;
 
 
-        public UsuarioService(
-            AuthUsuarioService authUsuarioService,
-            MongoClient mongoClient,
-            IOptions<ConfiguracionMongo> mongoConfig)
-        {
-            _authUsuarioService = authUsuarioService ?? throw new ArgumentNullException(nameof(authUsuarioService));
-            _cliente = mongoClient;
-            _configuracionMongo = mongoConfig.Value ?? throw new ArgumentException(nameof(mongoConfig));
+    public UsuarioService (
+        AuthUsuarioService authUsuarioService,
+        MongoClient mongoClient,
+        IOptions<ConfiguracionMongo> mongoConfig) {
+      _authUsuarioService = authUsuarioService ?? throw new ArgumentNullException (nameof (authUsuarioService));
+      _cliente = mongoClient;
+      _configuracionMongo = mongoConfig.Value ?? throw new ArgumentException (nameof (mongoConfig));
 
-            var mongoDB = _cliente.GetDatabase(_configuracionMongo.DataBase);
-            _usuarios = mongoDB.GetCollection<UsuarioModel>("Usuario");
-        }
-
-        #region CrearUsuario
-        public async Task<UsuarioModel> CrearUsuario (UsuarioModel crearusuario) {
-
-      if (crearusuario == null)
-        throw new ArgumentNullException (nameof (crearusuario), "El usuario no puede ser nulo.");
-
-      if (string.IsNullOrWhiteSpace (crearusuario.Nombre))
-        throw new ArgumentException ("El nombre es obligatorio.");
-
-      if (string.IsNullOrWhiteSpace (crearusuario.Email))
-        throw new ArgumentException ("El correo electrónico es obligatorio.");
-
-      if (string.IsNullOrEmpty (crearusuario.Contraseña))
-        throw new ArgumentException ("La contraseña es obligatoria.");
-
-
-      crearusuario.Contraseña = BCrypt.Net.BCrypt.EnhancedHashPassword (crearusuario.Contraseña);
-      await _usuarios.InsertOneAsync (crearusuario);
-      return crearusuario;
+      var mongoDB = _cliente.GetDatabase (_configuracionMongo.DataBase);
+      _usuarios = mongoDB.GetCollection<UsuarioModel> ("Usuario");
     }
+
+    #region CrearUsuario
+    public async Task<UsuarioModel> CrearUsuario (CrearUsuarioDTO crearusuariodto) {
+
+
+     if (crearusuariodto == null) 
+      {
+        throw new ArgumentException (nameof (crearusuariodto));
+      }
+
+      var Usuario = new UsuarioModel {
+        Nombre = crearusuariodto.Nombre,
+        Email = crearusuariodto.Email,
+        Contraseña = BCrypt.Net.BCrypt.EnhancedHashPassword(crearusuariodto.Contraseña)
+      };
+
+      await _usuarios.InsertOneAsync(Usuario);
+
+      return Usuario;
+
+
+    }
+
+    
     #endregion
 
 
@@ -114,16 +116,15 @@ namespace InvernaderoInteligente.Data.Services
 
     public async Task CambiarContrasena (string correo, string contrasena) {
 
-    var filtro = Builders<UsuarioModel>.Filter.Eq(c => c.Email, correo);
-    string passHashed = BCrypt.Net.BCrypt.EnhancedHashPassword(contrasena);
-    var actualizar = Builders<UsuarioModel>.Update.Set(p => p.Contraseña, passHashed);
+      var filtro = Builders<UsuarioModel>.Filter.Eq (c => c.Email, correo);
+      string passHashed = BCrypt.Net.BCrypt.EnhancedHashPassword (contrasena);
+      var actualizar = Builders<UsuarioModel>.Update.Set (p => p.Contraseña, passHashed);
 
-    var resultado = await _usuarios.UpdateOneAsync(filtro, actualizar);
+      var resultado = await _usuarios.UpdateOneAsync (filtro, actualizar);
 
-    if (resultado.MatchedCount == 0)
-        {
-            throw new Exception("Usuario no encontrado.");
-        }
+      if (resultado.MatchedCount == 0) {
+        throw new Exception ("Usuario no encontrado.");
+      }
     }
 
     #endregion
@@ -131,30 +132,27 @@ namespace InvernaderoInteligente.Data.Services
 
     #region Login
 
-         public async Task<string> Login(string email, string contrasena) 
-    {
+    public async Task<string> Login (string email, string contrasena) {
       var Filtro = Builders<UsuarioModel>.Filter.Eq (e => e.Email, email);
-      var Usuario = await _usuarios.Find(Filtro).FirstOrDefaultAsync();
+      var Usuario = await _usuarios.Find (Filtro).FirstOrDefaultAsync ();
 
-      if (Usuario == null) 
-      {
+      if (Usuario == null) {
         throw new Exception ("Usuario no encontrado");
       }
 
-      if (!BCrypt.Net.BCrypt.Verify (contrasena, Usuario.Contraseña)) 
-      {
+      if (!BCrypt.Net.BCrypt.EnhancedVerify(contrasena, Usuario.Contraseña)) {
         throw new Exception ("Contrasena incorrecta");
       }
 
       var Token = _authUsuarioService.GenerarToken (Usuario);
-      return Token; 
+      return Token;
 
 
     }
 
 
-        #endregion
+    #endregion
 
 
-    }
+  }
 }

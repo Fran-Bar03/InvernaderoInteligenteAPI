@@ -279,17 +279,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UsuarioModel"
+                "$ref": "#/components/schemas/CrearUsuarioDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UsuarioModel"
+                "$ref": "#/components/schemas/CrearUsuarioDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UsuarioModel"
+                "$ref": "#/components/schemas/CrearUsuarioDTO"
               }
             }
           }
@@ -417,6 +417,29 @@
   },
   "components": {
     "schemas": {
+      "CrearUsuarioDTO": {
+        "required": [
+          "contraseña",
+          "email",
+          "nombre"
+        ],
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "contraseña": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "InvernaderoModel": {
         "type": "object",
         "properties": {

@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InvernaderoInteligente.Data;
+using InvernaderoInteligente.Data.DTOs;
 using InvernaderoInteligente.Model;
 
 namespace InvernaderoInteligente.Data.Interfaces
 {
     public interface IUsuarioService
     {
-        public Task<UsuarioModel> CrearUsuario(UsuarioModel crearusuario);
+        public Task<UsuarioModel> CrearUsuario(CrearUsuarioDTO crearusuariodto);
 
         public Task<UsuarioModel> ActualizarUsuario(UsuarioModel actualizarusuario);
 

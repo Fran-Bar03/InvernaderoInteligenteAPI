@@ -8,12 +8,15 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile ("appsettings.json", optional: false, reloadOnChange: true);
+
+
 
 builder.Services.AddAuthentication ("Bearer")
    .AddJwtBearer ("Bearer", options => {
      options.RequireHttpsMetadata = false;
 
-     var JTW = builder.Configuration["Jwt.Secret"]!;
+     var JTW = builder.Configuration["Jwt:Secret"]!;
 
      SymmetricSecurityKey issuersigningkey = new SymmetricSecurityKey (Encoding.UTF8.GetBytes (JTW));
 
@@ -88,12 +91,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
+app.UseHttpsRedirection(); 
+app.UseAuthentication ();
 app.UseAuthorization();
-
-app.UseAuthentication();
-
 app.MapControllers();
 
 app.Run();

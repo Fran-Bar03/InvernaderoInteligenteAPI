@@ -24,7 +24,7 @@ namespace InvernaderoInteligente.Controllers
 
 
         // GET: api/<UsuarioController>
-        //[Authorize]
+        [Authorize]
         [HttpGet("MostrarUsuarios")]
         public async Task<IActionResult> FindAll()
         {
@@ -42,14 +42,14 @@ namespace InvernaderoInteligente.Controllers
 
         // POST api/<UsuarioController>
         [HttpPost("RegistrarUsuario")]
-        public async Task<IActionResult> CrearUsuario([FromBody]UsuarioModel usuario)
+        public async Task<IActionResult> CrearUsuario([FromBody]CrearUsuarioDTO crearusuariodto)
         {
-            if (usuario == null)
+            if (crearusuariodto == null)
             {
                 return BadRequest();
             }
 
-            var Resultado = await _usuarioService.CrearUsuario(usuario);
+            var Resultado = await _usuarioService.CrearUsuario(crearusuariodto);
             return Ok(Resultado);
         }
 
@@ -81,7 +81,6 @@ namespace InvernaderoInteligente.Controllers
             return Ok(new {Mensaje = "Usuario eliminado correctamente"});
         }
 
-        [Authorize]
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody]LoginDTO login) 
         {
