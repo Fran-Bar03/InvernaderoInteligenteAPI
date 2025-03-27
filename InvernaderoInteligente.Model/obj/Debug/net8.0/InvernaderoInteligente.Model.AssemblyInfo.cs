@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InvernaderoInteligente.Model")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3fe407a73391692a27f8349b831dcf656c09d92")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53ac7d9eafa6b41a5900511f5898a28209d66140")]
 [assembly: System.Reflection.AssemblyProductAttribute("InvernaderoInteligente.Model")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InvernaderoInteligente.Model")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

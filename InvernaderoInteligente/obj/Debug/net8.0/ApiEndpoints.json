@@ -212,6 +212,22 @@
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
+    "Method": "Login",
+    "RelativePath": "api/Usuario/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "InvernaderoInteligente.Data.DTOs.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
     "Method": "FindAll",
     "RelativePath": "api/Usuario/MostrarUsuarios",
     "HttpMethod": "GET",

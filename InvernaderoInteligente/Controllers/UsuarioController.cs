@@ -1,4 +1,5 @@
-﻿using InvernaderoInteligente.Data.Services;
+﻿using InvernaderoInteligente.Data.DTOs;
+using InvernaderoInteligente.Data.Services;
 using InvernaderoInteligente.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -78,6 +79,27 @@ namespace InvernaderoInteligente.Controllers
         {
             await _usuarioService.BorrarUsuario(correo);
             return Ok(new {Mensaje = "Usuario eliminado correctamente"});
+        }
+
+        [Authorize]
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody]LoginDTO login) 
+        {
+            if (!ModelState.IsValid) 
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var Token = await _usuarioService.Login(login.Email, login.Contrasena);
+                return Ok(new { Token });
+            }
+
+            catch (Exception ex)
+            {
+                return Unauthorized(new { mensaje = ex.Message});
+            }
         }
     }
 }

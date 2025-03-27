@@ -73,6 +73,7 @@ builder.Services.AddScoped<InvernaderoService>();
 
 builder.Services.AddScoped<SensorService>();
 
+builder.Services.AddSingleton<AuthUsuarioService>();
 
 
 

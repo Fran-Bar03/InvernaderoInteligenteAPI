@@ -20,7 +20,7 @@ namespace InvernaderoInteligente.Data.Interfaces
 
         public Task CambiarContrasena(string correo, string contrasena);
 
-        public Task Login (string correo, string contrasena);
+        public Task<string> Login (string correo, string contrasena);
 
 
     }

@@ -32,8 +32,8 @@ namespace InvernaderoInteligente.Data.Services
 
     public string GenerarToken (UsuarioModel usuario) 
     {
-      var Claims = new[] 
-      {
+            var Claims = new[]
+            {
         new Claim(ClaimTypes.NameIdentifier, usuario.UsuarioId!),
         new Claim(ClaimTypes.Name, usuario.Email!),
         new Claim(ClaimTypes.Role, usuario.Rol.ToString())
