@@ -8,7 +8,7 @@ namespace InvernaderoInteligente.Data.DTOs
 {
     public class ValidarCodigoDTO
     {
-        public string Token { get; set; }
+        
         public string Codigo { get; set; }
 
     }

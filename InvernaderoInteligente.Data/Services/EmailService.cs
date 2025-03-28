@@ -33,7 +33,8 @@ namespace InvernaderoInteligente.Data.Services
             {
                 From = new MailAddress(_emailsettings.Email),
                 Subject = asunto,
-                Body = cuerpo
+                Body = cuerpo,
+                //IsBodyHtml = true
             };
 
             mensaje.To.Add(destinatario);

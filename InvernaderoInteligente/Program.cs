@@ -9,7 +9,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile ("appsettings.json", optional: false, reloadOnChange: true);
-
+builder.Configuration.AddJsonFile ("secret.json", optional: true, reloadOnChange: true);
 
 
 builder.Services.AddAuthentication ("Bearer")
@@ -41,6 +41,7 @@ builder.Services.AddAuthentication ("Bearer")
 
 
 
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -63,6 +64,9 @@ builder.Services.AddSingleton((sp =>
 
 
 
+builder.Services.Configure<EmailSettings> (builder.Configuration.GetSection ("EmailSettings"));
+
+
 // Registrar el servicio de invernaderos
 builder.Services.AddScoped<IInvernaderoService, InvernaderoService>();
 
@@ -79,7 +83,7 @@ builder.Services.AddScoped<SensorService>();
 builder.Services.AddSingleton<AuthUsuarioService>();
 
 
-
+builder.Services.AddSingleton<IEmailService, EmailService> ();
 
 
 var app = builder.Build();

@@ -57,13 +57,13 @@ namespace InvernaderoInteligente.Data.Services
         }
 
 
-        public bool ValidarCodigo(ValidarCodigoDTO dto)
+        public bool ValidarCodigo(ValidarCodigoDTO dto, string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             try
             {
 
-                var principal = tokenHandler.ReadToken(dto.Token) as JwtSecurityToken;
+                var principal = tokenHandler.ReadToken(token) as JwtSecurityToken;
 
                 
                 var codigoToken = principal?.Claims.FirstOrDefault(c => c.Type == "codigo")?.Value;
@@ -77,6 +77,8 @@ namespace InvernaderoInteligente.Data.Services
                 return false;
             }
         }
+
+        
 
 
     }
