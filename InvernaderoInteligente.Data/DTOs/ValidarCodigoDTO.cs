@@ -9,6 +9,7 @@ namespace InvernaderoInteligente.Data.DTOs
     public class ValidarCodigoDTO
     {
         
+        public string Email { get; set; }
         public string Codigo { get; set; }
 
     }

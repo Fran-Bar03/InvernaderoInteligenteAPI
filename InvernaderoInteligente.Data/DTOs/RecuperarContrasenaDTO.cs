@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace InvernaderoInteligente.Data.DTOs {
   public class RecuperarContrasenaDTO 
   {
-    public string Contrasena { get; set; }
+    public string Contraseña { get; set; }
+
+    public string ConfirmarContraseña { get; set; }
   }
 }

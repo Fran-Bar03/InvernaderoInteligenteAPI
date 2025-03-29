@@ -64,27 +64,20 @@ builder.Services.AddSingleton((sp =>
 
 
 
-builder.Services.Configure<EmailSettings> (builder.Configuration.GetSection ("EmailSettings"));
+
 
 
 // Registrar el servicio de invernaderos
-builder.Services.AddScoped<IInvernaderoService, InvernaderoService>();
-
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-
-builder.Services.AddScoped<ISensorService, SensorService>();
-
 builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddScoped<IInvernaderoService, InvernaderoService>();
+builder.Services.AddScoped<ISensorService, SensorService>();
+builder.Services.AddScoped<AuthUsuarioService>();
+builder.Services.AddScoped<IEmailService, EmailService> ();
+builder.Services.AddScoped<RecuperarContrasenaService>();
+builder.Services.AddMemoryCache();
 
-builder.Services.AddScoped<InvernaderoService>();
-
-builder.Services.AddScoped<SensorService>();
-
-builder.Services.AddSingleton<AuthUsuarioService>();
-
-
-builder.Services.AddSingleton<IEmailService, EmailService> ();
-
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
 var app = builder.Build();
 

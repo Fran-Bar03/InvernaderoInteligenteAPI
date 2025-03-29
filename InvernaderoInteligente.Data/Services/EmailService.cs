@@ -38,8 +38,6 @@ namespace InvernaderoInteligente.Data.Services
             };
 
             mensaje.To.Add(destinatario);
-
-
             await cliente.SendMailAsync (mensaje);
 
         }

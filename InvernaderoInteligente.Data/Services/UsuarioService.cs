@@ -4,6 +4,7 @@ using InvernaderoInteligente.Data.Interfaces;
 using InvernaderoInteligente.Model;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System;
@@ -20,15 +21,16 @@ namespace InvernaderoInteligente.Data.Services {
     private ConfiguracionMongo _configuracionMongo;
     private MongoClient _cliente;
     private readonly AuthUsuarioService _authUsuarioService;
+    private readonly IMemoryCache _memorycache;
 
 
     public UsuarioService (
-        AuthUsuarioService authUsuarioService,
-        MongoClient mongoClient,
-        IOptions<ConfiguracionMongo> mongoConfig) {
+        AuthUsuarioService authUsuarioService,MongoClient mongoClient,IOptions<ConfiguracionMongo> mongoConfig, IMemoryCache memorycache) 
+    {
       _authUsuarioService = authUsuarioService ?? throw new ArgumentNullException (nameof (authUsuarioService));
       _cliente = mongoClient;
       _configuracionMongo = mongoConfig.Value ?? throw new ArgumentException (nameof (mongoConfig));
+      _memorycache = memorycache;
 
       var mongoDB = _cliente.GetDatabase (_configuracionMongo.DataBase);
       _usuarios = mongoDB.GetCollection<UsuarioModel> ("Usuario");

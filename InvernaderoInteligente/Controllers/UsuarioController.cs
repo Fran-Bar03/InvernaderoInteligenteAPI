@@ -3,6 +3,7 @@ using InvernaderoInteligente.Data.Services;
 using InvernaderoInteligente.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,11 +15,13 @@ namespace InvernaderoInteligente.Controllers
     {
 
         private readonly UsuarioService _usuarioService;
-        
+        private readonly RecuperarContrasenaService _recuperarcontrasenaservice;
 
-        public UsuarioController(UsuarioService usuarioService)
+
+        public UsuarioController(UsuarioService usuarioService, RecuperarContrasenaService recuperarcontrasenaservice)
         {
             _usuarioService = usuarioService;
+            _recuperarcontrasenaservice = recuperarcontrasenaservice;
         }
 
 
@@ -42,7 +45,7 @@ namespace InvernaderoInteligente.Controllers
 
         // POST api/<UsuarioController>
         [HttpPost("RegistrarUsuario")]
-        public async Task<IActionResult> CrearUsuario([FromBody]CrearUsuarioDTO crearusuariodto)
+        public async Task<IActionResult> CrearUsuario([FromBody] CrearUsuarioDTO crearusuariodto)
         {
             if (crearusuariodto == null)
             {
@@ -59,16 +62,16 @@ namespace InvernaderoInteligente.Controllers
         public async Task<IActionResult> ActualizarUsuario(UsuarioModel usuariomodel)
         {
             await _usuarioService.ActualizarUsuario(usuariomodel);
-            return Ok(new{Mensaje = "Datos actualizados correctamente" });
+            return Ok(new { Mensaje = "Datos actualizados correctamente" });
         }
 
 
         [HttpPut("CambiarContrasena/{correo}")]
 
-        public async Task<IActionResult> CambiarContrasena(string correo,string contrasena)
+        public async Task<IActionResult> CambiarContrasena(string correo, string contrasena)
         {
-            await _usuarioService.CambiarContrasena(correo,contrasena);
-            return Ok(new {Mensaje = "Contraseña actualizada correctamente"});
+            await _usuarioService.CambiarContrasena(correo, contrasena);
+            return Ok(new { Mensaje = "Contraseña actualizada correctamente" });
         }
 
 
@@ -78,13 +81,13 @@ namespace InvernaderoInteligente.Controllers
         public async Task<IActionResult> BorrarUsuario(string correo)
         {
             await _usuarioService.BorrarUsuario(correo);
-            return Ok(new {Mensaje = "Usuario eliminado correctamente"});
+            return Ok(new { Mensaje = "Usuario eliminado correctamente" });
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromBody]LoginDTO login) 
+        public async Task<IActionResult> Login([FromBody] LoginDTO login)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
@@ -97,8 +100,76 @@ namespace InvernaderoInteligente.Controllers
 
             catch (Exception ex)
             {
-                return Unauthorized(new { mensaje = ex.Message});
+                return Unauthorized(new { mensaje = ex.Message });
             }
         }
+
+        [HttpPost("CambiarContrasena-Email")]
+        public async Task<IActionResult> RecuperarContrasenaEmail([FromBody] RecuperarContrasenaDTO dto)
+        {
+            try
+            {
+
+                if (dto.Contraseña != dto.ConfirmarContrasena)
+                {
+                    return BadRequest("Las contraseñas no coinciden.");
+                }
+
+
+                // Extraemos el token del encabezado de la solicitud (Authorization Header)
+                string token = Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+
+                if (string.IsNullOrEmpty(token))
+                {
+                    return Unauthorized("Token no proporcionado.");
+                }
+
+                // Validamos el token y obtenemos el email del token
+                var email = _recuperarcontrasenaservice.ValidarToken(token);
+                if (string.IsNullOrEmpty(email))
+                {
+                    return Unauthorized("Token inválido o expirado.");
+                }
+
+                // Cambiamos la contraseña del usuario utilizando el correo extraído del token
+                await _usuarioService.CambiarContrasena(email, dto.Contraseña);
+                return Ok("Contraseña cambiada correctamente.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+
+
+        [HttpPost("ValidarCodigo")]
+        public IActionResult ValidarCodigo([FromBody] ValidarCodigoDTO dto)
+        {
+            try
+            {
+                string token = _recuperarcontrasenaservice.ValidarCodigo(dto);
+                return Ok(new { Mensaje = "CodigoValido", Token = token });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+
+        [HttpPost("EnviarCodigo")]
+        public async Task<IActionResult> EnviarCodigoRecuperacion([FromBody] RecuperarContrasenaEmailDTO dto)
+        {
+            try
+            { 
+                await _recuperarcontrasenaservice.EnviarCodigoRecuperacion(dto);
+
+                return Ok("El código ha sido enviado a tu correo.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+        
     }
 }

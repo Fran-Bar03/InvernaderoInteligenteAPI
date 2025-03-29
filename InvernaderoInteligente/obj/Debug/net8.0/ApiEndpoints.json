@@ -191,6 +191,22 @@
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
+    "Method": "RecuperarContrasenaEmail",
+    "RelativePath": "api/Usuario/CambiarContrasena-Email",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "InvernaderoInteligente.Data.DTOs.RecuperarContrasenaDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
     "Method": "CambiarContrasena",
     "RelativePath": "api/Usuario/CambiarContrasena/{correo}",
     "HttpMethod": "PUT",
@@ -206,6 +222,22 @@
         "Name": "contrasena",
         "Type": "System.String",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
+    "Method": "EnviarCodigoRecuperacion",
+    "RelativePath": "api/Usuario/EnviarCodigo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "InvernaderoInteligente.Data.DTOs.RecuperarContrasenaEmailDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -247,6 +279,22 @@
       {
         "Name": "crearusuariodto",
         "Type": "InvernaderoInteligente.Data.DTOs.CrearUsuarioDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.UsuarioController",
+    "Method": "ValidarCodigo",
+    "RelativePath": "api/Usuario/ValidarCodigo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "InvernaderoInteligente.Data.DTOs.ValidarCodigoDTO",
         "IsRequired": true
       }
     ],
