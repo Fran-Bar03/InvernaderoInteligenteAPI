@@ -609,13 +609,21 @@
         "additionalProperties": false
       },
       "RecuperarContrasenaDTO": {
+        "required": [
+          "token"
+        ],
         "type": "object",
         "properties": {
+          "token": {
+            "minLength": 1,
+            "type": "string"
+          },
           "contraseña": {
+            "minLength": 6,
             "type": "string",
             "nullable": true
           },
-          "confirmarContrasena": {
+          "confirmarContraseña": {
             "type": "string",
             "nullable": true
           }
