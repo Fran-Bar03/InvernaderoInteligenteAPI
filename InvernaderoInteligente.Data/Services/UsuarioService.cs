@@ -46,9 +46,9 @@ namespace InvernaderoInteligente.Data.Services {
       }
 
       var Usuario = new UsuarioModel {
-        Nombre = crearusuariodto.Nombre,
+        NombreCompleto = crearusuariodto.NombreCompleto,
         Email = crearusuariodto.Email,
-        Contraseña = BCrypt.Net.BCrypt.EnhancedHashPassword(crearusuariodto.Contraseña)
+        Contrasena = BCrypt.Net.BCrypt.EnhancedHashPassword(crearusuariodto.Contrasena)
       };
 
       await _usuarios.InsertOneAsync(Usuario);
@@ -68,7 +68,7 @@ namespace InvernaderoInteligente.Data.Services {
     public async Task<UsuarioModel> ActualizarUsuario (UsuarioModel actualizarusuario) {
 
       var Filtro = Builders<UsuarioModel>.Filter.Eq (a => a.UsuarioId, actualizarusuario.UsuarioId);
-      actualizarusuario.Contraseña = BCrypt.Net.BCrypt.HashPassword (actualizarusuario.Contraseña);
+      actualizarusuario.Contrasena = BCrypt.Net.BCrypt.HashPassword (actualizarusuario.Contrasena);
 
       var Resultado = await _usuarios.ReplaceOneAsync (Filtro, actualizarusuario);
 
@@ -120,7 +120,7 @@ namespace InvernaderoInteligente.Data.Services {
 
       var filtro = Builders<UsuarioModel>.Filter.Eq (c => c.Email, correo);
       string passHashed = BCrypt.Net.BCrypt.EnhancedHashPassword (contrasena);
-      var actualizar = Builders<UsuarioModel>.Update.Set (p => p.Contraseña, passHashed);
+      var actualizar = Builders<UsuarioModel>.Update.Set (p => p.Contrasena, passHashed);
 
       var resultado = await _usuarios.UpdateOneAsync (filtro, actualizar);
 
@@ -142,7 +142,7 @@ namespace InvernaderoInteligente.Data.Services {
         throw new Exception ("Usuario no encontrado");
       }
 
-      if (!BCrypt.Net.BCrypt.EnhancedVerify(contrasena, Usuario.Contraseña)) {
+      if (!BCrypt.Net.BCrypt.EnhancedVerify(contrasena, Usuario.Contrasena)) {
         throw new Exception ("Contrasena incorrecta");
       }
 

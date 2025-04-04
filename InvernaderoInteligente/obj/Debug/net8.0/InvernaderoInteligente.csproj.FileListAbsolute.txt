@@ -255,7 +255,6 @@ C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente\obj\Debu
 C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.InvernaderoInteligente.props
 C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.InvernaderoInteligente.props
 C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente\obj\Debug\net8.0\Invernad.DF76BF5E.Up2Date
 C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente\obj\Debug\net8.0\InvernaderoInteligente.dll
 C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente\obj\Debug\net8.0\refint\InvernaderoInteligente.dll

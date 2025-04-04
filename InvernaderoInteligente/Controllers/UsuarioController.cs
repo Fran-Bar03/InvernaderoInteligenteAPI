@@ -91,14 +91,9 @@ namespace InvernaderoInteligente.Controllers {
     [HttpPost ("CambiarContrasena-Email")]
     public async Task<IActionResult> RecuperarContrasenaEmail ([FromBody] RecuperarContrasenaDTO dto) {
       try {
-        // Validamos el token y obtenemos el email del token
-        var email = _recuperarcontrasenaservice.ValidarToken (dto.Token);
-        if (string.IsNullOrEmpty (email)) {
-          return Unauthorized ("Token inválido o expirado.");
-        }
-
+        
         // Cambiamos la contraseña del usuario utilizando el correo extraído del token
-        await _usuarioService.CambiarContrasena (email, dto.Contraseña);
+        await _usuarioService.CambiarContrasena (dto.Email, dto.Contrasena);
         return Ok ("Contraseña cambiada correctamente.");
       } catch (Exception ex) {
         return BadRequest ($"Error: {ex.Message}");

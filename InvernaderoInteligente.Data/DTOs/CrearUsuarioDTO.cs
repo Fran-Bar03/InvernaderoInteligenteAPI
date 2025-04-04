@@ -9,11 +9,11 @@ namespace InvernaderoInteligente.Data.DTOs {
   public class CrearUsuarioDTO 
   {
     [Required]
-    public string? Nombre { get; set; }
+    public string? NombreCompleto { get; set; }
     [Required]
     public string? Email { get; set; }
     [Required]
-    public string? Contraseña { get; set; }
+    public string? Contrasena { get; set; }
 
 
   }

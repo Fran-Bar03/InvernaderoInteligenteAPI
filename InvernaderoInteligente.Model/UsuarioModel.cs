@@ -14,20 +14,16 @@ namespace InvernaderoInteligente.Model
         [BsonRepresentation(BsonType.ObjectId)]
         public string? UsuarioId { get; set; }
 
-        [BsonElement("Nombre")]
-        public string? Nombre { get;set; }
+        [BsonElement("NombreCompleto")]
+        public string? NombreCompleto { get;set; }
 
         [BsonElement("Email")]
         public string? Email { get; set; }
 
-        [BsonElement("Contraseña")]
-        public string? Contraseña { get; set; }
+        [BsonElement("Contrasena")]
+        public string? Contrasena { get; set; }
 
-        [BsonElement("Rol")]
-        public int Rol {  get; set; }
-
-        [BsonElement("Inverndaeros")]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public List<string>? Invernaderos { get; set; } = new List<string>();
+        [BsonElement ("Rol")]
+        public string Rol { get; set; } = "2";
     } 
 }
