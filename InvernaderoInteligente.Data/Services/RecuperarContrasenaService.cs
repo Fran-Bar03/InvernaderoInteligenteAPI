@@ -36,7 +36,7 @@ namespace InvernaderoInteligente.Data.Services
 
 
 
-        public async Task EnviarCodigoRecuperacion(RecuperarContrasenaEmailDTO dto)
+        public async Task<string> EnviarCodigoRecuperacion(RecuperarContrasenaEmailDTO dto)
         {
             try
             {
@@ -53,6 +53,7 @@ namespace InvernaderoInteligente.Data.Services
 
                 _memorycache.Set(dto.Email, data, TimeSpan.FromMinutes(6));
                 await _emailservice.EnviarCorreoAsync(dto.Email, "Codigo de recuperacion", $"Tu codigo de recuperacion es : {codigo}");
+                return Token;
             }
             catch (Exception ex)
             {
@@ -102,7 +103,7 @@ namespace InvernaderoInteligente.Data.Services
 
             return new JwtSecurityTokenHandler().WriteToken(Token);
         }
-
+        
         public string ValidarToken(string token)
         {
             try

@@ -110,7 +110,7 @@ namespace InvernaderoInteligente.Controllers {
     public IActionResult ValidarCodigo ([FromBody] ValidarCodigoDTO dto) {
       try {
         string token = _recuperarcontrasenaservice.ValidarCodigo (dto);
-        return Ok (new { Mensaje = "CodigoValido", Token = token });
+        return Ok (token);
       } catch (Exception ex) {
         return BadRequest ($"Error: {ex.Message}");
       }
@@ -119,9 +119,9 @@ namespace InvernaderoInteligente.Controllers {
     [HttpPost ("EnviarCodigo")]
     public async Task<IActionResult> EnviarCodigoRecuperacion ([FromBody] RecuperarContrasenaEmailDTO dto) {
       try {
-        await _recuperarcontrasenaservice.EnviarCodigoRecuperacion (dto);
+        var Token = await _recuperarcontrasenaservice.EnviarCodigoRecuperacion (dto);
 
-        return Ok ("El código ha sido enviado a tu correo.");
+        return Ok (Token);
       } catch (Exception ex) {
         return BadRequest ($"Error: {ex.Message}");
       }

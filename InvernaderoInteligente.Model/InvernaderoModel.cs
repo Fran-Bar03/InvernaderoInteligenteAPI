@@ -23,6 +23,9 @@ namespace InvernaderoInteligente.Model
         [BsonElement("TipoPlanta")]
         public string? TipoPlanta { get; set; }
 
+        [BsonElement("Imagen")]
+        public string? Imagen { get; set; }
+
         [BsonElement("MinTemperatura")]
         public decimal? MinTemperatura { get; set; }
 
