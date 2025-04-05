@@ -33,7 +33,8 @@ namespace InvernaderoInteligente.Data.Services
             {
         new Claim(ClaimTypes.NameIdentifier, usuario.UsuarioId!),
         new Claim(ClaimTypes.Name, usuario.Email!),
-        new Claim(ClaimTypes.Role, usuario.Rol.ToString())
+        new Claim(ClaimTypes.Role, usuario.Rol.ToString()),
+        new Claim("NombreCompleto", usuario.NombreCompleto!)
       };
 
 

@@ -81,7 +81,7 @@ namespace InvernaderoInteligente.Controllers {
 
       try {
         var Token = await _usuarioService.Login (login.Email, login.Contrasena);
-        return Ok (new { Token });
+        return Ok (Token);
       } catch (Exception ex) {
         return Unauthorized (new { mensaje = ex.Message });
       }
