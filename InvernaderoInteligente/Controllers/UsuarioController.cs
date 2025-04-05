@@ -24,7 +24,6 @@ namespace InvernaderoInteligente.Controllers {
 
 
     // GET: api/<UsuarioController>
-    [Authorize]
     [HttpGet ("MostrarUsuarios")]
     public async Task<IActionResult> FindAll () {
       var usuario = await _usuarioService.FindAll ();

@@ -24,6 +24,6 @@ namespace InvernaderoInteligente.Model
         public string? Contrasena { get; set; }
 
         [BsonElement ("Rol")]
-        public string Rol { get; set; } = "2";
+        public int Rol { get; set; } 
     } 
 }

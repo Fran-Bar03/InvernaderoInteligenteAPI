@@ -75,6 +75,8 @@ builder.Services.AddScoped<ISensorService, SensorService>();
 builder.Services.AddScoped<AuthUsuarioService>();
 builder.Services.AddScoped<IEmailService, EmailService> ();
 builder.Services.AddScoped<RecuperarContrasenaService>();
+builder.Services.AddScoped<SensorService>();
+builder.Services.AddScoped<InvernaderoService>();
 builder.Services.AddMemoryCache();
 
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
