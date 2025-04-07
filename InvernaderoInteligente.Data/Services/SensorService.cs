@@ -1,4 +1,5 @@
-﻿using InvernaderoInteligente.Data.Interfaces;
+﻿using InvernaderoInteligente.Data.DTOs;
+using InvernaderoInteligente.Data.Interfaces;
 using InvernaderoInteligente.Model;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
@@ -40,7 +41,7 @@ namespace InvernaderoInteligente.Data.Services
 
 
 
-        #region BuscarSensor
+    #region BuscarSensor
         public async Task<SensorModel> BuscarSensor(string Tipo)
         {
             var Filtro = Builders<SensorModel>.Filter.Eq(t => t.Tipo, Tipo);
@@ -71,6 +72,28 @@ namespace InvernaderoInteligente.Data.Services
     #region MostrarSensores
     public async Task<List<SensorModel>> MostrarSensores() => await _sensores.Find(a => true).ToListAsync();
 
-        #endregion
+    #endregion
+
+
+  
+    #region ActualizarLecturaSensor
+    public async Task<SensorModel> ActualizarLecturaSensor (string id, SensorLecturaDTO lectura) {
+      var filtro = Builders<SensorModel>.Filter.Eq (s => s.SensorId, id);
+      var actualizacion = Builders<SensorModel>.Update
+          .Set (s => s.Valor, lectura.Valor)
+          .Set (s => s.Estado, lectura.Estado)
+          .Set (s => s.FechaLectura, lectura.FechaLectura);
+
+      var resultado = await _sensores.UpdateOneAsync (filtro, actualizacion);
+
+      if (resultado.MatchedCount == 0)
+        throw new Exception ("No se encontró el sensor");
+
+      // Devuelve el sensor actualizado si quieres (opcional)
+      return await _sensores.Find (filtro).FirstOrDefaultAsync ();
+
+      #endregion
     }
+
+  }
 }

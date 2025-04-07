@@ -135,6 +135,49 @@
         }
       }
     },
+    "/api/LecturaSensor/ObtenerLecturasConInvernadero": {
+      "get": {
+        "tags": [
+          "LecturaSensor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/LecturaSensor/RegistrarLectura": {
+      "post": {
+        "tags": [
+          "LecturaSensor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LecturaSensorModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LecturaSensorModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LecturaSensorModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Sensor/MostarSensores": {
       "get": {
         "tags": [
@@ -574,6 +617,35 @@
             "items": {
               "type": "string"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LecturaSensorModel": {
+        "type": "object",
+        "properties": {
+          "lecturaId": {
+            "type": "string",
+            "nullable": true
+          },
+          "sensorId": {
+            "type": "string",
+            "nullable": true
+          },
+          "valor": {
+            "type": "number",
+            "format": "double"
+          },
+          "estado": {
+            "type": "boolean"
+          },
+          "fechaLectura": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invernadero": {
+            "type": "string",
             "nullable": true
           }
         },

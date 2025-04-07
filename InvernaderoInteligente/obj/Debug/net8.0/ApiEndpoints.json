@@ -84,6 +84,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InvernaderoInteligente.Controllers.LecturaSensorController",
+    "Method": "ObtenerLecturasConInvernadero",
+    "RelativePath": "api/LecturaSensor/ObtenerLecturasConInvernadero",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.LecturaSensorController",
+    "Method": "RegistrarLectura",
+    "RelativePath": "api/LecturaSensor/RegistrarLectura",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lectura",
+        "Type": "InvernaderoInteligente.Model.LecturaSensorModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
     "Method": "AgregarSensor",
     "RelativePath": "api/Sensor/AgregarSensor",
