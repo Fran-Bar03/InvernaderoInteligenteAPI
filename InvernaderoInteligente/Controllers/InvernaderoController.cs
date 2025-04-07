@@ -1,4 +1,5 @@
 ﻿using InvernaderoInteligente.Data.Interfaces;
+using InvernaderoInteligente.Data.Services;
 using InvernaderoInteligente.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +14,12 @@ namespace InvernaderoInteligente.Controllers
 
 
         private readonly IInvernaderoService _invernaderoService;
+        private readonly InvernaderoService _iinvernaderoService;
 
-        public InvernaderoController(IInvernaderoService invernaderoService)
+        public InvernaderoController(IInvernaderoService invernaderoService, InvernaderoService invernaderoService1)
         {
             _invernaderoService = invernaderoService;
+            _iinvernaderoService = invernaderoService1;
         }
 
         
@@ -67,6 +70,45 @@ namespace InvernaderoInteligente.Controllers
         {
             await _invernaderoService.EliminarInvernadero(Nombre);
             return Ok(new {Mensaje = "Invernadero eliminado correctamente " });
+        }
+
+
+        // POST: api/Invernadero/AgregarInvernadero
+        [HttpPost("AgregarInvernadero")]
+        public async Task<IActionResult> AgregarInvernadero([FromBody] InvernaderoModel invernadero)
+        {
+            try
+            {
+                // Aquí pasamos la lista de usuarios
+                var usuarios = invernadero.Usuarios;
+                var result = await _iinvernaderoService.AgregarInvernaderoAsync(invernadero, usuarios);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                // Si ocurre algún error, retornar un mensaje de error
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+
+
+
+
+
+
+        // GET: api/Invernadero/Usuarios
+        [HttpGet("UsuariosConInvernaderos")]
+        public async Task<IActionResult> ObtenerUsuariosConInvernaderos()
+        {
+            try
+            {
+                var usuarios = await _iinvernaderoService.ObtenerUsuariosConInvernaderos();
+                return Ok(usuarios);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener los usuarios: {ex.Message}");
+            }
         }
     }
 }

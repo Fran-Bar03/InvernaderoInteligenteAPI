@@ -22,15 +22,18 @@ namespace InvernaderoInteligente.Data.Services {
     private MongoClient _cliente;
     private readonly AuthUsuarioService _authUsuarioService;
     private readonly IMemoryCache _memorycache;
+    private readonly InvernaderoService _invernaderoService;
 
 
     public UsuarioService (
-        AuthUsuarioService authUsuarioService,MongoClient mongoClient,IOptions<ConfiguracionMongo> mongoConfig, IMemoryCache memorycache) 
+        AuthUsuarioService authUsuarioService,MongoClient mongoClient,IOptions<ConfiguracionMongo> mongoConfig, IMemoryCache memorycache, InvernaderoService invernaderoService) 
     {
       _authUsuarioService = authUsuarioService ?? throw new ArgumentNullException (nameof (authUsuarioService));
       _cliente = mongoClient;
       _configuracionMongo = mongoConfig.Value ?? throw new ArgumentException (nameof (mongoConfig));
       _memorycache = memorycache;
+      _invernaderoService = invernaderoService;
+
 
       var mongoDB = _cliente.GetDatabase (_configuracionMongo.DataBase);
       _usuarios = mongoDB.GetCollection<UsuarioModel> ("Usuario");
@@ -153,8 +156,9 @@ namespace InvernaderoInteligente.Data.Services {
     }
 
 
-    #endregion
+        #endregion
 
 
-  }
+
+    }
 }

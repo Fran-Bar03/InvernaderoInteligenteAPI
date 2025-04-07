@@ -39,11 +39,9 @@ namespace InvernaderoInteligente.Model
         public decimal? MaxHumedad { get;set; }
 
         [BsonElement("Usuarios")]
-        [BsonRepresentation(BsonType.ObjectId)]
         public List<string>? Usuarios { get; set; } = new List<string>();
 
         [BsonElement("Sensores")]
-        [BsonRepresentation(BsonType.ObjectId)]
         public List<string>? Sensores { get; set; } = new List<string>();
 
     }

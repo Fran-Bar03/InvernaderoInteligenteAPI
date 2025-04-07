@@ -81,6 +81,17 @@ builder.Services.AddMemoryCache();
 
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy("AllowFrontEnd", policy =>
+    {
+        policy.AllowAnyOrigin() //aqui pones la url de tu frontend
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -94,5 +105,5 @@ app.UseHttpsRedirection();
 app.UseAuthentication ();
 app.UseAuthorization();
 app.MapControllers();
-
+app.UseCors("AllowFrontEnd");
 app.Run();

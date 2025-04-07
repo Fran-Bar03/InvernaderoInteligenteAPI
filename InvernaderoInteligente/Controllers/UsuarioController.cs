@@ -98,7 +98,7 @@ namespace InvernaderoInteligente.Controllers {
         return BadRequest ($"Error: {ex.Message}");
       }
     }
-
+        
 
     [HttpPost ("ValidarCodigo")]
     public IActionResult ValidarCodigo ([FromBody] ValidarCodigoDTO dto) {
@@ -121,5 +121,8 @@ namespace InvernaderoInteligente.Controllers {
       }
     }
 
-  }
+        
+
+
+    }
 }

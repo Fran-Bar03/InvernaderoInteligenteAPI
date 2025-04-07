@@ -23,7 +23,11 @@ namespace InvernaderoInteligente.Model
         [BsonElement("Contrasena")]
         public string? Contrasena { get; set; }
 
-        [BsonElement ("Rol")]
-        public int Rol { get; set; } 
-    } 
-}
+        [BsonElement("Rol")]
+        public int Rol { get; set; } = 2;
+
+        [BsonElement("Invernaderos")]
+        public List<string> Invernaderos { get; set; } = new List<string>(); // Aquí agregamos la lista de invernaderos
+    }
+} 
+

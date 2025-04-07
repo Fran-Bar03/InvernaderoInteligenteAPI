@@ -149,6 +149,49 @@
         }
       }
     },
+    "/api/Invernadero/AgregarInvernadero": {
+      "post": {
+        "tags": [
+          "Invernadero"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvernaderoModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvernaderoModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvernaderoModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Invernadero/UsuariosConInvernaderos": {
+      "get": {
+        "tags": [
+          "Invernadero"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Sensor/MostarSensores": {
       "get": {
         "tags": [
@@ -512,13 +555,13 @@
     "schemas": {
       "CrearUsuarioDTO": {
         "required": [
-          "contraseña",
+          "contrasena",
           "email",
-          "nombre"
+          "nombreCompleto"
         ],
         "type": "object",
         "properties": {
-          "nombre": {
+          "nombreCompleto": {
             "minLength": 1,
             "type": "string"
           },
@@ -526,7 +569,7 @@
             "minLength": 1,
             "type": "string"
           },
-          "contraseña": {
+          "contrasena": {
             "minLength": 1,
             "type": "string"
           }
@@ -549,6 +592,10 @@
             "nullable": true
           },
           "tipoPlanta": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagen": {
             "type": "string",
             "nullable": true
           },
@@ -609,21 +656,14 @@
         "additionalProperties": false
       },
       "RecuperarContrasenaDTO": {
-        "required": [
-          "token"
-        ],
         "type": "object",
         "properties": {
-          "token": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "contraseña": {
-            "minLength": 6,
+          "email": {
             "type": "string",
             "nullable": true
           },
-          "confirmarContraseña": {
+          "contrasena": {
+            "minLength": 6,
             "type": "string",
             "nullable": true
           }
@@ -672,7 +712,7 @@
             "type": "string",
             "nullable": true
           },
-          "nombre": {
+          "nombreCompleto": {
             "type": "string",
             "nullable": true
           },
@@ -680,7 +720,7 @@
             "type": "string",
             "nullable": true
           },
-          "contraseña": {
+          "contrasena": {
             "type": "string",
             "nullable": true
           },

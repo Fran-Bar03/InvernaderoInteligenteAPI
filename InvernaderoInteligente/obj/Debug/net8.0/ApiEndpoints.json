@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
+    "Method": "AgregarInvernadero",
+    "RelativePath": "api/Invernadero/AgregarInvernadero",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "invernadero",
+        "Type": "InvernaderoInteligente.Model.InvernaderoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
     "Method": "BuscarInvernadero",
     "RelativePath": "api/Invernadero/BuscarInvernadero/{Nombre}",
     "HttpMethod": "GET",
@@ -82,6 +98,16 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
+    "Method": "ObtenerUsuariosConInvernaderos",
+    "RelativePath": "api/Invernadero/UsuariosConInvernaderos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
