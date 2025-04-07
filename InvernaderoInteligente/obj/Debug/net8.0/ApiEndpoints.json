@@ -49,30 +49,14 @@
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
-    "Method": "CrearInvernadero",
-    "RelativePath": "api/Invernadero/CrearInvernadero",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "agregarinvernadero",
-        "Type": "InvernaderoInteligente.Model.InvernaderoModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
-    "Method": "Eliminarinvernadero",
-    "RelativePath": "api/Invernadero/EliminarInvernadero{Nombre}",
+    "Method": "EliminarInvernadero",
+    "RelativePath": "api/Invernadero/EliminarInvernadero/{nombreInvernadero}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Nombre",
+        "Name": "nombreInvernadero",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -81,23 +65,13 @@
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
-    "Method": "GetAll",
+    "Method": "ListarInvernaderosConUsuarios",
     "RelativePath": "api/Invernadero/ListarInvernaderos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[InvernaderoInteligente.Model.InvernaderoModel, InvernaderoInteligente.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.InvernaderoController",
@@ -143,8 +117,8 @@
   },
   {
     "ContainingType": "InvernaderoInteligente.Controllers.SensorController",
-    "Method": "EliminarUsuario",
-    "RelativePath": "api/Sensor/EliminarSensor{Tipo}",
+    "Method": "EliminarSensor",
+    "RelativePath": "api/Sensor/EliminarSensor/{Tipo}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

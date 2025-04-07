@@ -15,8 +15,9 @@ namespace InvernaderoInteligente.Data.Services
         private readonly IMongoCollection<SensorModel> _sensores;
         private readonly MongoClient _Client;
         private readonly ConfiguracionMongo _configuracionMongo;
+        private readonly InvernaderoService _invernaderoService;
 
-        public SensorService(MongoClient mongoClient, IOptions<ConfiguracionMongo> MongoConfig)
+    public SensorService (MongoClient mongoClient, IOptions<ConfiguracionMongo> MongoConfig, InvernaderoService invernaderoService)
         {
 
             _Client = mongoClient;
@@ -24,12 +25,13 @@ namespace InvernaderoInteligente.Data.Services
 
             var MongoDB = mongoClient.GetDatabase(_configuracionMongo.DataBase);
 
-            _sensores = MongoDB.GetCollection<SensorModel>("Sensor");
+            _sensores = MongoDB.GetCollection<SensorModel> ("Sensor");
+            _invernaderoService = invernaderoService;
 
-        }
+    }
 
-        #region AgregarSensor
-        public async Task<SensorModel> AgregarSensor(SensorModel sensorModel)
+    #region AgregarSensor
+    public async Task<SensorModel> AgregarSensor(SensorModel sensorModel)
         {
             await _sensores.InsertOneAsync(sensorModel);
             return sensorModel;
@@ -45,22 +47,29 @@ namespace InvernaderoInteligente.Data.Services
             return await _sensores.Find(Filtro).FirstAsync();
         }
 
-        #endregion
+    #endregion
 
 
 
-        #region EliminarSensor
-        public async Task EliminarSensor(string Tipo)
-        {
-            var Filtro = Builders<SensorModel>.Filter.Eq(t => t.Tipo, Tipo);
-            await _sensores.DeleteOneAsync(Filtro);
-        }
-        #endregion
+    #region EliminarSensor
+      public async Task EliminarSensor (string Tipo) {
+      var filtro = Builders<SensorModel>.Filter.Eq (t => t.Tipo, Tipo);
+      var sensor = await _sensores.Find (filtro).FirstOrDefaultAsync ();
+
+      if (sensor == null)
+        throw new Exception ("Sensor no encontrado.");
+
+      // También lo quitamos de los invernaderos
+      await _invernaderoService.EliminarSensorDeInvernaderos (sensor.Tipo);
+
+      await _sensores.DeleteOneAsync (filtro);
+    }
+    #endregion
 
 
 
-        #region MostrarSensores
-        public async Task<List<SensorModel>> MostrarSensores() => await _sensores.Find(a => true).ToListAsync();
+    #region MostrarSensores
+    public async Task<List<SensorModel>> MostrarSensores() => await _sensores.Find(a => true).ToListAsync();
 
         #endregion
     }

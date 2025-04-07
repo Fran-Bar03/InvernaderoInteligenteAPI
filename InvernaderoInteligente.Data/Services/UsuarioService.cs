@@ -61,27 +61,50 @@ namespace InvernaderoInteligente.Data.Services {
 
     }
 
-    
+
     #endregion
 
 
 
     #region ActualizarUsuario
+    public async Task<UsuarioModel> ActualizarUsuario(UsuarioModel actualizarusuario)
+{
+    var filtro = Builders<UsuarioModel>.Filter.Eq(u => u.UsuarioId, actualizarusuario.UsuarioId);
+    var usuarioExistente = await _usuarios.Find(filtro).FirstOrDefaultAsync();
 
-    public async Task<UsuarioModel> ActualizarUsuario (UsuarioModel actualizarusuario) {
+    if (usuarioExistente == null)
+        throw new Exception("No existe el usuario");
 
-      var Filtro = Builders<UsuarioModel>.Filter.Eq (a => a.UsuarioId, actualizarusuario.UsuarioId);
-      actualizarusuario.Contrasena = BCrypt.Net.BCrypt.HashPassword (actualizarusuario.Contrasena);
+    // Solo actualiza los campos que se enviaron (los que no sean null o vacíos)
+    var updateDef = new List<UpdateDefinition<UsuarioModel>>();
 
-      var Resultado = await _usuarios.ReplaceOneAsync (Filtro, actualizarusuario);
+    if (!string.IsNullOrEmpty(actualizarusuario.NombreCompleto))
+        updateDef.Add(Builders<UsuarioModel>.Update.Set(u => u.NombreCompleto, actualizarusuario.NombreCompleto));
 
-      if (Resultado.MatchedCount == 0) {
-        throw new Exception ("No existe el usuario");
-      }
+    if (!string.IsNullOrEmpty(actualizarusuario.Email))
+        updateDef.Add(Builders<UsuarioModel>.Update.Set(u => u.Email, actualizarusuario.Email));
 
-      return actualizarusuario;
+    if (!string.IsNullOrEmpty(actualizarusuario.Contrasena))
+    {
+        string hashed = BCrypt.Net.BCrypt.HashPassword(actualizarusuario.Contrasena);
+        updateDef.Add(Builders<UsuarioModel>.Update.Set(u => u.Contrasena, hashed));
     }
 
+    if (actualizarusuario.Rol != 0) // Asumiendo que 0 no es un rol válido
+        updateDef.Add(Builders<UsuarioModel>.Update.Set(u => u.Rol, actualizarusuario.Rol));
+
+    if (actualizarusuario.Invernaderos != null && actualizarusuario.Invernaderos.Any())
+        updateDef.Add(Builders<UsuarioModel>.Update.Set(u => u.Invernaderos, actualizarusuario.Invernaderos));
+
+    if (updateDef.Count == 0)
+        throw new Exception("No se enviaron campos para actualizar");
+
+    var update = Builders<UsuarioModel>.Update.Combine(updateDef);
+    await _usuarios.UpdateOneAsync(filtro, update);
+
+    // Devuelve el usuario actualizado
+    return await _usuarios.Find(filtro).FirstOrDefaultAsync();
+    }
     #endregion
 
 
@@ -108,10 +131,19 @@ namespace InvernaderoInteligente.Data.Services {
     #region BorrarUsuario
 
     public async Task BorrarUsuario (string correo) {
-      var Filtro = Builders<UsuarioModel>.Filter.Eq (a => a.Email, correo);
-      await _usuarios.DeleteOneAsync (Filtro);
+      var filtroUsuario = Builders<UsuarioModel>.Filter.Eq (u => u.Email, correo);
+      var usuario = await _usuarios.Find (filtroUsuario).FirstOrDefaultAsync ();
 
+      if (usuario == null)
+        throw new Exception ("Usuario no encontrado.");
+
+      // 🔁 Llamamos al método público del servicio de invernaderos
+      await _invernaderoService.EliminarUsuarioDeInvernaderos (usuario.NombreCompleto);
+
+      await _usuarios.DeleteOneAsync (filtroUsuario);
     }
+
+
 
     #endregion
 

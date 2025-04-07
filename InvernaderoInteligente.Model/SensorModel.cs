@@ -26,6 +26,9 @@ namespace InvernaderoInteligente.Model
         [BsonElement("FechaLectura")]
         public DateTime FechaLectura { get; set; } = DateTime.UtcNow;
 
+        [BsonElement("Invernadero")]
+        public string Invernadero { get; set; }
+
 
     }
 }

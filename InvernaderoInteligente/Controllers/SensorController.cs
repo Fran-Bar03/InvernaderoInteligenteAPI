@@ -50,18 +50,21 @@ namespace InvernaderoInteligente.Controllers
 
         }
 
-        // PUT api/<SensorController>/5
-        //[HttpPut("{id}")]
-       // public void Put(int id, [FromBody] string value)
-       // {
-        //}
+    // PUT api/<SensorController>/5
+    //[HttpPut("{id}")]
+    // public void Put(int id, [FromBody] string value)
+    // {
+    //}
 
-        // DELETE api/<SensorController>/5
-        [HttpDelete("EliminarSensor{Tipo}")]
-        public async Task<IActionResult> EliminarUsuario(string Tipo)
-        {
-            await _sensorService.EliminarSensor(Tipo);
-            return Ok(new {Mensaje = "Sensor eliminado correctamente"});
-        }
+    // DELETE api/<SensorController>/5
+        [HttpDelete ("EliminarSensor/{Tipo}")]
+         public async Task<IActionResult> EliminarSensor (string Tipo) {
+      try {
+        await _sensorService.EliminarSensor (Tipo);
+        return Ok (new { Mensaje = "Sensor eliminado correctamente" });
+      } catch (Exception ex) {
+        return BadRequest (new { Error = ex.Message });
+      }
     }
+  }
 }

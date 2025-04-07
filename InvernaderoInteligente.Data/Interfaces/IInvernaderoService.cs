@@ -11,7 +11,6 @@ namespace InvernaderoInteligente.Data.Interfaces
     {
 
         public Task<InvernaderoModel?> AgregarInvernadero(InvernaderoModel agregarinvernadero);
-        public Task<InvernaderoModel?> ActualizarInvernadero(InvernaderoModel actualizarinvernadero);
         public Task<List<InvernaderoModel?>> ListarInvernaderos();
         public Task<InvernaderoModel> BuscarInvernadero(string Nombre);
         public Task<InvernaderoModel> EliminarInvernadero(string nombre);

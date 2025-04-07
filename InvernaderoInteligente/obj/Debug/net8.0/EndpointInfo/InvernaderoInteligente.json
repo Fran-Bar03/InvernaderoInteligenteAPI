@@ -12,33 +12,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/InvernaderoModel"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/InvernaderoModel"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/InvernaderoModel"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -58,37 +32,6 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Invernadero/CrearInvernadero": {
-      "post": {
-        "tags": [
-          "Invernadero"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InvernaderoModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InvernaderoModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/InvernaderoModel"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -120,28 +63,6 @@
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Invernadero/EliminarInvernadero{Nombre}": {
-      "delete": {
-        "tags": [
-          "Invernadero"
-        ],
-        "parameters": [
-          {
-            "name": "Nombre",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -184,6 +105,28 @@
       "get": {
         "tags": [
           "Invernadero"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Invernadero/EliminarInvernadero/{nombreInvernadero}": {
+      "delete": {
+        "tags": [
+          "Invernadero"
+        ],
+        "parameters": [
+          {
+            "name": "nombreInvernadero",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -257,7 +200,7 @@
         }
       }
     },
-    "/api/Sensor/EliminarSensor{Tipo}": {
+    "/api/Sensor/EliminarSensor/{Tipo}": {
       "delete": {
         "tags": [
           "Sensor"
@@ -701,6 +644,10 @@
           "fechaLectura": {
             "type": "string",
             "format": "date-time"
+          },
+          "invernadero": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
