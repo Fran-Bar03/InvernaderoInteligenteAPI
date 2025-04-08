@@ -195,91 +195,111 @@ namespace InvernaderoInteligente.Data.Services {
       var invernaderoEliminado = await _invernaderos.FindOneAndDeleteAsync (filtro);
       return invernaderoEliminado;
     }
-    #endregion
+        #endregion
 
     #region CrearInvernadero
-    public async Task<InvernaderoModel?> AgregarInvernaderoAsync (InvernaderoModel invernadero, List<string> nombresUsuariosEncargados, List<string> tiposSensores) {
-      // Validar que la lista de nombres de usuarios no esté vacía
-      if (nombresUsuariosEncargados == null || nombresUsuariosEncargados.Count == 0) {
-        throw new ArgumentException ("La lista de nombres de usuarios no puede estar vacía.");
-      }
+        public async Task<InvernaderoModel?> AgregarInvernaderoAsync(InvernaderoModel invernadero, List<string> nombresUsuariosEncargados, List<string> tiposSensores)
+        {
+            try
+            {
+                // Buscar los usuarios encargados por su nombre completo solo si se proporcionan usuarios
+                List<string> nombresFiltrados = new();
+                if (nombresUsuariosEncargados != null && nombresUsuariosEncargados.Count > 0)
+                {
+                    var usuariosEncargados = await _usuariosCollection
+                        .Find(u => nombresUsuariosEncargados.Contains(u.NombreCompleto))
+                        .ToListAsync();
 
-      // Validar que la lista de tipos de sensores no esté vacía
-      if (tiposSensores == null || tiposSensores.Count == 0) {
-        throw new ArgumentException ("La lista de tipos de sensores no puede estar vacía.");
-      }
+                    if (usuariosEncargados.Count < nombresUsuariosEncargados.Count)
+                    {
+                        var nombresNoEncontrados = nombresUsuariosEncargados.Except(usuariosEncargados.Select(u => u.NombreCompleto)).ToList();
+                        throw new Exception($"No se encontraron los siguientes usuarios: {string.Join(", ", nombresNoEncontrados)}");
+                    }
 
-      // Buscar los usuarios encargados por su nombre completo
-      var usuariosEncargados = await _usuariosCollection
-          .Find (u => nombresUsuariosEncargados.Contains (u.NombreCompleto))
-          .ToListAsync ();
+                    nombresFiltrados = usuariosEncargados.Select(u => u.NombreCompleto).ToList();
 
-      // Verificar si se encontraron todos los usuarios
-      if (usuariosEncargados.Count < nombresUsuariosEncargados.Count) {
-        var nombresNoEncontrados = nombresUsuariosEncargados.Except (usuariosEncargados.Select (u => u.NombreCompleto)).ToList ();
-        throw new Exception ($"No se encontraron los siguientes usuarios: {string.Join (", ", nombresNoEncontrados)}");
-      }
+                    foreach (var usuario in usuariosEncargados)
+                    {
+                        if (!usuario.Invernaderos.Contains(invernadero.Nombre))
+                        {
+                            usuario.Invernaderos.Add(invernadero.Nombre);
+                        }
 
-      // Asignar los usuarios al invernadero
-      invernadero.Usuarios = usuariosEncargados.Select (u => u.NombreCompleto).ToList ();
+                        var updateDefinition = Builders<UsuarioModel>.Update.AddToSet(u => u.Invernaderos, invernadero.Nombre);
+                        await _usuariosCollection.UpdateOneAsync(
+                            u => u.UsuarioId == usuario.UsuarioId,
+                            updateDefinition
+                        );
+                    }
+                }
 
-      // Asignar el nombre del invernadero a los usuarios (esto es lo que falta para actualizar los usuarios)
-      foreach (var usuario in usuariosEncargados) {
-        // Verifica si el invernadero ya está asignado al usuario
-        if (!usuario.Invernaderos.Contains (invernadero.Nombre)) {
-          // Agregar el invernadero a la lista de invernaderos del usuario
-          usuario.Invernaderos.Add (invernadero.Nombre);  // Asignar el invernadero al usuario
+                // Buscar sensores por tipo
+                List<string> sensoresFiltrados = new();
+                if (tiposSensores != null && tiposSensores.Count > 0)
+                {
+                    var sensoresEncargados = await _sensorCollection
+                        .Find(s => tiposSensores.Contains(s.Tipo))
+                        .ToListAsync();
+
+                    if (sensoresEncargados.Count < tiposSensores.Count)
+                    {
+                        var tiposNoEncontrados = tiposSensores.Except(sensoresEncargados.Select(s => s.Tipo)).ToList();
+                        throw new Exception($"No se encontraron los siguientes tipos de sensores: {string.Join(", ", tiposNoEncontrados)}");
+                    }
+
+                    sensoresFiltrados = sensoresEncargados.Select(s => s.Tipo).ToList();
+
+                    foreach (var sensor in sensoresEncargados)
+                    {
+                        if (sensor.Invernadero != invernadero.Nombre)
+                        {
+                            sensor.Invernadero = invernadero.Nombre;
+                        }
+
+                        var updateDefinition = Builders<SensorModel>.Update.Set(s => s.Invernadero, sensor.Invernadero);
+                        await _sensorCollection.UpdateOneAsync(
+                            s => s.SensorId == sensor.SensorId,
+                            updateDefinition
+                        );
+                    }
+                }
+
+                // Crear un nuevo objeto limpio solo con los nombres completos y tipos
+                var nuevoInvernadero = new InvernaderoModel
+                {
+                    Nombre = invernadero.Nombre,
+                    NombrePlanta = invernadero.NombrePlanta,
+                    TipoPlanta = invernadero.TipoPlanta,
+                    Imagen = invernadero.Imagen,
+                    MinTemperatura = invernadero.MinTemperatura,
+                    MaxTemperatura = invernadero.MaxTemperatura,
+                    MinHumedad = invernadero.MinHumedad,
+                    MaxHumedad = invernadero.MaxHumedad,
+                    Usuarios = nombresFiltrados,
+                    Sensores = sensoresFiltrados
+                };
+
+                // Insertar solo el modelo limpio
+                await _invernaderos.InsertOneAsync(nuevoInvernadero);
+
+                return nuevoInvernadero;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error al agregar el invernadero: {ex.Message}");
+            }
         }
 
-        // Crear la actualización para este usuario
-        var updateDefinition = Builders<UsuarioModel>.Update.AddToSet (u => u.Invernaderos, invernadero.Nombre);
-
-        // Actualizar el usuario con el nuevo invernadero asignado
-        await _usuariosCollection.UpdateOneAsync (
-            u => u.UsuarioId == usuario.UsuarioId,
-            updateDefinition
-        );
-      }
 
 
-      // Buscar los sensores por tipo y asignarles el invernadero
-      var sensoresEncargados = await _sensorCollection
-          .Find (s => tiposSensores.Contains (s.Tipo))
-          .ToListAsync ();
 
-      // Verificar si se encontraron todos los sensores
-      if (sensoresEncargados.Count < tiposSensores.Count) {
-        var tiposNoEncontrados = tiposSensores.Except (sensoresEncargados.Select (s => s.Tipo)).ToList ();
-        throw new Exception ($"No se encontraron los siguientes tipos de sensores: {string.Join (", ", tiposNoEncontrados)}");
-      }
 
-      // Asignar el nombre del invernadero a los sensores
-      foreach (var sensor in sensoresEncargados) {
-        if (sensor.Invernadero != invernadero.Nombre) {
-          sensor.Invernadero = invernadero.Nombre;
-        }
 
-        // Crear la actualización para este sensor
-        var updateDefinition = Builders<SensorModel>.Update.Set (s => s.Invernadero, sensor.Invernadero);
-
-        // Actualizar el sensor con el nuevo invernadero asignado
-        await _sensorCollection.UpdateOneAsync (
-            s => s.SensorId == sensor.SensorId,
-            updateDefinition
-        );
-      }
-
-      // Guardar el invernadero en la base de datos
-      await _invernaderos.InsertOneAsync (invernadero);
-
-      // Devolver el invernadero actualizado con los usuarios y sensores asignados
-      return invernadero;
-    }
-    #endregion
+        #endregion
 
 
     #region ObtenerUsuariosConInvernaderos
-    public async Task<List<UsuarioModel>> ObtenerUsuariosConInvernaderos () {
+        public async Task<List<UsuarioModel>> ObtenerUsuariosConInvernaderos () {
       // Obtener todos los usuarios que tienen al menos un invernadero asignado
       var usuariosConInvernaderos = await _usuariosCollection
           .Find (u => u.Invernaderos.Any ()) // Filtra los usuarios que tienen al menos un invernadero
@@ -291,45 +311,49 @@ namespace InvernaderoInteligente.Data.Services {
 
       return usuariosConInvernaderos;
     }
-    #endregion
+        #endregion
 
 
-    #region EliminarInvernadero
-    public async Task<bool> EliminarInvernaderoAsync (string nombreInvernadero) {
-      // Eliminar el invernadero de la colección de invernaderos
-      var resultInvernadero = await _invernaderos.DeleteOneAsync (i => i.Nombre == nombreInvernadero);
+        #region EliminarInvernadero
+        public async Task<bool> EliminarInvernaderoAsync(string nombreInvernadero)
+        {
+            // Buscar el invernadero antes de intentar eliminarlo
+            var invernaderoExistente = await _invernaderos.Find(i => i.Nombre == nombreInvernadero).FirstOrDefaultAsync();
 
-      // Si no se eliminó el invernadero, retornamos false
-      if (resultInvernadero.DeletedCount == 0) {
-        return false;
-      }
+            // Si no se encuentra el invernadero, retornamos false
+            if (invernaderoExistente == null)
+            {
+                return false; // Invernadero no encontrado
+            }
 
-      // Eliminar la referencia al invernadero de la colección de usuarios
-      var resultUsuarios = await _usuariosCollection.UpdateManyAsync (
-          u => u.Invernaderos.Contains (nombreInvernadero),
-          Builders<UsuarioModel>.Update.Pull (u => u.Invernaderos, nombreInvernadero)
-      );
+            // Eliminar el invernadero de la colección de invernaderos
+            var resultInvernadero = await _invernaderos.DeleteOneAsync(i => i.Nombre == nombreInvernadero);
 
-      // Eliminar la referencia al invernadero de la colección de sensores
-      var resultSensores = await _sensorCollection.UpdateManyAsync (
-          s => s.Invernadero == nombreInvernadero,
-          Builders<SensorModel>.Update.Set (s => s.Invernadero, null)
-      );
+            // Eliminar la referencia del invernadero de la colección de usuarios
+            var resultUsuarios = await _usuariosCollection.UpdateManyAsync(
+                u => u.Invernaderos.Contains(nombreInvernadero),
+                Builders<UsuarioModel>.Update.Pull(u => u.Invernaderos, nombreInvernadero)
+            );
 
-      // Verificamos que todo haya sido actualizado correctamente
-      if (resultUsuarios.ModifiedCount > 0 && resultSensores.ModifiedCount > 0) {
-        return true;
-      }
+            // Eliminar la referencia del invernadero de la colección de sensores
+            var resultSensores = await _sensorCollection.UpdateManyAsync(
+                s => s.Invernadero == nombreInvernadero,
+                Builders<SensorModel>.Update.Set(s => s.Invernadero, null)
+            );
 
-      return false;
-    }
-
-    #endregion
-
+            // Verificamos que la eliminación y actualización de referencias se haya realizado correctamente
+            return resultInvernadero.DeletedCount > 0 && resultUsuarios.ModifiedCount > 0 && resultSensores.ModifiedCount > 0;
+        }
 
 
-    #region EliminarUsuarioModeloInvernadero
-    public async Task EliminarUsuarioDeInvernaderos (string nombreUsuario) {
+
+
+        #endregion
+
+
+
+        #region EliminarUsuarioModeloInvernadero
+        public async Task EliminarUsuarioDeInvernaderos (string nombreUsuario) {
       var filtro = Builders<InvernaderoModel>.Filter.ElemMatch (i => i.Usuarios, u => u == nombreUsuario);
       var update = Builders<InvernaderoModel>.Update.Pull (i => i.Usuarios, nombreUsuario);
 

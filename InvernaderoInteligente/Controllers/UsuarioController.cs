@@ -48,9 +48,24 @@ namespace InvernaderoInteligente.Controllers {
       return Ok (Resultado);
     }
 
-    // PUT api/<UsuarioController>/5
-    //[Authorize]
-    [HttpPut ("ActualizarUsuario")]
+
+        [HttpPost("CrearCuenta")]
+       public async Task<IActionResult> CrearCuenta([FromBody] UsuarioModel usuarioModel)
+        {
+            try
+            {
+                var usuario = await _usuarioService.CrearCuenta(usuarioModel);
+                return Ok(usuario); // Retorna el usuario creado
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error al crear cuenta: {ex.Message}"); // Manejo de errores
+            }
+        }
+
+        // PUT api/<UsuarioController>/5
+        //[Authorize]
+        [HttpPut ("ActualizarUsuario")]
     public async Task<IActionResult> ActualizarUsuario (UsuarioModel usuariomodel) {
       await _usuarioService.ActualizarUsuario (usuariomodel);
       return Ok (new { Mensaje = "Datos actualizados correctamente" });

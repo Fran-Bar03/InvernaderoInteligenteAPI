@@ -39,7 +39,7 @@ namespace InvernaderoInteligente.Data.Services {
       _usuarios = mongoDB.GetCollection<UsuarioModel> ("Usuario");
     }
 
-    #region CrearUsuario
+    #region Registrarse
     public async Task<UsuarioModel> CrearUsuario (CrearUsuarioDTO crearusuariodto) {
 
 
@@ -188,6 +188,39 @@ namespace InvernaderoInteligente.Data.Services {
     }
 
 
+        #endregion
+
+
+
+        #region CrearCuenta
+        public async Task<UsuarioModel> CrearCuenta(UsuarioModel usuarioModel)
+        {
+            if (usuarioModel == null)
+            {
+                throw new ArgumentException(nameof(usuarioModel));
+            }
+
+            // Encriptar la contraseña antes de almacenarla
+            usuarioModel.Contrasena = BCrypt.Net.BCrypt.EnhancedHashPassword(usuarioModel.Contrasena);
+
+            // Si no se proporciona un rol, asigna el valor predeterminado de 2 (usuario regular)
+            if (usuarioModel.Rol == 0)
+            {
+                usuarioModel.Rol = 2; // Rol por defecto, puedes modificar este valor si lo deseas
+            }
+
+            // Si no se proporcionan invernaderos, asignar una lista vacía
+            if (usuarioModel.Invernaderos == null)
+            {
+                usuarioModel.Invernaderos = new List<string>();
+            }
+
+            // Insertar el nuevo usuario en la base de datos
+            await _usuarios.InsertOneAsync(usuarioModel);
+
+            // Retornar el usuario creado
+            return usuarioModel;
+        }
         #endregion
 
 

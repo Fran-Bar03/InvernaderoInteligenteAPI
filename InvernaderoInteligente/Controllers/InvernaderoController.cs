@@ -27,30 +27,51 @@ namespace InvernaderoInteligente.Controllers {
 
 
 
-    // GET: api/<InvernaderoController>
-    [HttpGet ("ListarInvernaderos")]
-    public async Task<IActionResult> ListarInvernaderosConUsuarios () {
-      var invernaderos = await _invernaderoService.ListarInvernaderos ();
+        // GET: api/<InvernaderoController>
+        // GET: api/<InvernaderoController>
+        [HttpGet("ListarInvernaderos")]
+        public async Task<IActionResult> ListarInvernaderosConUsuarios()
+        {
+            // Obtener todos los invernaderos
+            var invernaderos = await _invernaderoService.ListarInvernaderos();
 
-      // Obtener todos los usuarios que están asociados a estos invernaderos
-      var invernaderoNombres = invernaderos.Select (i => i.Nombre).ToList ();
-      var usuariosAsignados = await _usuariosCollection
-          .Find (u => u.Invernaderos.Any (i => invernaderoNombres.Contains (i)))
-          .ToListAsync ();
+            // Obtener todos los usuarios que están asociados a estos invernaderos
+            var invernaderoNombres = invernaderos.Select(i => i.Nombre).ToList();
+            var usuariosAsignados = await _usuariosCollection
+                .Find(u => u.Invernaderos.Any(i => invernaderoNombres.Contains(i)))
+                .ToListAsync();
 
-      var resultado = invernaderos.Select (inv => new {
-        Invernadero = inv,
-        Usuarios = usuariosAsignados.Where (u => u.Invernaderos.Contains (inv.Nombre)).ToList ()
-      }).ToList ();
+            // Construir la respuesta, asegurándonos de que solo se devuelvan los nombres completos de los usuarios
+            var resultado = invernaderos.Select(inv => new {
+                Invernadero = new
+                {
+                    inv.InvernaderoId,
+                    inv.Nombre,
+                    inv.NombrePlanta,
+                    inv.TipoPlanta,
+                    inv.Imagen,
+                    inv.MinTemperatura,
+                    inv.MaxTemperatura,
+                    inv.MinHumedad,
+                    inv.MaxHumedad,
+                    Sensores = inv.Sensores // Solo mantén los sensores aquí
+                },
+                Usuarios = usuariosAsignados
+                    .Where(u => u.Invernaderos.Contains(inv.Nombre)) // Filtramos por invernadero
+                    .Select(u => u.NombreCompleto)  // Solo seleccionamos el nombre completo
+                    .Distinct() // Elimina duplicados
+                    .ToList()
+            }).ToList();
 
-      return Ok (resultado);
-    }
+            return Ok(resultado);
+        }
 
 
 
 
-    // GET api/<InvernaderoController>/5
-    [HttpGet ("BuscarInvernadero/{Nombre}")]
+
+        // GET api/<InvernaderoController>/5
+        [HttpGet ("BuscarInvernadero")]
     public async Task<IActionResult> BuscarInvernadero (string Nombre) {
       var Invernadero = await _invernaderoService.BuscarInvernadero (Nombre);
       return Ok (Invernadero);
@@ -113,21 +134,29 @@ namespace InvernaderoInteligente.Controllers {
 
 
 
-    [HttpDelete ("EliminarInvernadero/{nombreInvernadero}")]
-    public async Task<IActionResult> EliminarInvernadero (string nombreInvernadero) {
-      try {
-        // Llamamos al servicio para eliminar el invernadero
-        var result = await _iinvernaderoService.EliminarInvernaderoAsync (nombreInvernadero);
+        [HttpDelete("EliminarInvernadero/{nombreInvernadero}")]
+        public async Task<IActionResult> EliminarInvernadero(string nombreInvernadero)
+        {
+            try
+            {
+                // Llamamos al servicio para eliminar el invernadero
+                var result = await _iinvernaderoService.EliminarInvernaderoAsync(nombreInvernadero);
 
-        if (result) {
-          return Ok ("Invernadero eliminado correctamente.");
+                if (result)
+                {
+                    return Ok(new { message = "Invernadero eliminado correctamente." });
+                }
+
+                // Si no se encontró el invernadero, devolvemos un mensaje adecuado
+                return Ok(new { message = "El invernadero no fue encontrado, pero la operación se completó sin eliminar nada." });
+            }
+            catch (Exception ex)
+            {
+                // Si ocurre un error, retornamos un mensaje de error
+                return BadRequest(new { message = $"Error: {ex.Message}" });
+            }
         }
 
-        return NotFound ("El invernadero no fue encontrado.");
-      } catch (Exception ex) {
-        // Si ocurre un error, retornamos un mensaje de error
-        return BadRequest ($"Error: {ex.Message}");
-      }
+
     }
-  }
 }
