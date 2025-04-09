@@ -1,4 +1,5 @@
 ﻿using InvernaderoInteligente.Data;
+using InvernaderoInteligente.Data.DTOs;
 using InvernaderoInteligente.Data.Interfaces;
 using InvernaderoInteligente.Data.Services;
 using InvernaderoInteligente.Model;
@@ -154,9 +155,25 @@ namespace InvernaderoInteligente.Controllers {
             {
                 // Si ocurre un error, retornamos un mensaje de error
                 return BadRequest(new { message = $"Error: {ex.Message}" });
-            }
-        }
-
-
+      }
     }
+
+
+
+
+    [HttpGet]
+    public async Task<ActionResult<List<InvernaderoDTO>>> GetInvernaderos () {
+      var invernaderos = await _iinvernaderoService.ObtenerTodosInvernaderosAsync();
+      if (invernaderos == null || invernaderos.Count == 0) {
+        return NotFound ("No se encontraron invernaderos.");
+      }
+
+      return Ok (invernaderos);
+    }
+
+
+
+
+
+  }
 }

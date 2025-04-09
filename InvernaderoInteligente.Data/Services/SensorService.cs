@@ -95,5 +95,20 @@ namespace InvernaderoInteligente.Data.Services
       #endregion
     }
 
+
+
+
+
+    #region CambiarEstado
+
+    public async Task<bool> CambiarEstadoSensorAsync (string sensorId, bool nuevoEstado) {
+      var filtro = Builders<SensorModel>.Filter.Eq (s => s.SensorId, sensorId);
+      var actualizacion = Builders<SensorModel>.Update.Set (s => s.Estado, nuevoEstado);
+
+      var resultado = await _sensores.UpdateOneAsync (filtro, actualizacion);
+      return resultado.ModifiedCount > 0;
+    }
+
+    #endregion
   }
 }

@@ -1,6 +1,7 @@
 ﻿using InvernaderoInteligente.Data.DTOs;
 using InvernaderoInteligente.Data.Interfaces;
 using InvernaderoInteligente.Model;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,18 @@ namespace InvernaderoInteligente.Data.Services {
   public class LecturaSensorService {
     private readonly IMongoCollection<LecturaSensorModel> _lecturaSensors;
     private readonly IMongoCollection<SensorModel> _sensores;
+    private readonly IMongoCollection<LecturaSensorModel> _lecturaSenspr;
+    private readonly MongoClient _client;
+    private readonly ConfiguracionMongo _configuracionMongo;
 
-    public LecturaSensorService (IMongoDatabase database) {
-      _lecturaSensors = database.GetCollection<LecturaSensorModel> ("LecturaSensor");
-      _sensores = database.GetCollection<SensorModel> ("Sensor");
+    public LecturaSensorService (MongoClient mongoClient, IOptions<ConfiguracionMongo> ConfigMongo) {
+      _client = mongoClient;
+      _configuracionMongo = ConfigMongo.Value ?? throw new ArgumentNullException (nameof (ConfigMongo));
+
+      var MongoDB = mongoClient.GetDatabase (_configuracionMongo.DataBase);
+      _sensores = MongoDB.GetCollection<SensorModel> ("Sensor");
+      _lecturaSensors = MongoDB.GetCollection<LecturaSensorModel> ("LecturaSensor");
+
     }
 
     #region ObtenerLecturas

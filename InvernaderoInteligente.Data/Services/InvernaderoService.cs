@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.WebRequestMethods;
+using InvernaderoInteligente.Data.DTOs;
 
 namespace InvernaderoInteligente.Data.Services {
   public class InvernaderoService : IInvernaderoService {
@@ -175,6 +176,27 @@ namespace InvernaderoInteligente.Data.Services {
     #endregion
 
 
+    #region ListarMaui
+
+    public async Task<List<InvernaderoDTO>> ObtenerTodosInvernaderosAsync () {
+      // Proyección para obtener solo los campos necesarios
+      var projection = Builders<InvernaderoModel>.Projection
+          .Include (x => x.Imagen)
+          .Include (x => x.Nombre)
+          .Include (x => x.NombrePlanta)
+          .Include (x => x.TipoPlanta);
+
+      // Obtener todos los invernaderos desde la base de datos
+      var invernaderos = await _invernaderos
+          .Find (Builders<InvernaderoModel>.Filter.Empty) // Filtro vacío para obtener todos
+          .Project<InvernaderoDTO> (projection) // Proyección de los campos requeridos
+          .ToListAsync ();
+
+      return invernaderos;
+    }
+
+    #endregion
+
 
     #region ListarInvernaderos
     public async Task<List<InvernaderoModel>> ListarInvernaderos () {
@@ -314,7 +336,7 @@ namespace InvernaderoInteligente.Data.Services {
         #endregion
 
 
-        #region EliminarInvernadero
+     #region EliminarInvernadero
         public async Task<bool> EliminarInvernaderoAsync(string nombreInvernadero)
         {
             // Buscar el invernadero antes de intentar eliminarlo
@@ -352,7 +374,7 @@ namespace InvernaderoInteligente.Data.Services {
 
 
 
-        #region EliminarUsuarioModeloInvernadero
+    #region EliminarUsuarioModeloInvernadero
         public async Task EliminarUsuarioDeInvernaderos (string nombreUsuario) {
       var filtro = Builders<InvernaderoModel>.Filter.ElemMatch (i => i.Usuarios, u => u == nombreUsuario);
       var update = Builders<InvernaderoModel>.Update.Pull (i => i.Usuarios, nombreUsuario);
@@ -369,6 +391,9 @@ namespace InvernaderoInteligente.Data.Services {
       await _invernaderos.UpdateManyAsync (filtro, update);
     }
     #endregion
+
+
+
 
 
   }

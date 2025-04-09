@@ -78,7 +78,7 @@ builder.Services.AddScoped<RecuperarContrasenaService>();
 builder.Services.AddScoped<SensorService>();
 builder.Services.AddScoped<InvernaderoService>();
 builder.Services.AddMemoryCache();
-
+builder.Services.AddScoped<LecturaSensorService>();
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
 builder.Services.AddCors(option =>

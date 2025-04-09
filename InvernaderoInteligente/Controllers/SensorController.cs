@@ -1,4 +1,5 @@
-﻿using InvernaderoInteligente.Data.Services;
+﻿using InvernaderoInteligente.Data.DTOs;
+using InvernaderoInteligente.Data.Services;
 using InvernaderoInteligente.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -61,6 +62,16 @@ namespace InvernaderoInteligente.Controllers {
     }
 
 
+
+    [HttpPut ("estado")]
+    public async Task<IActionResult> CambiarEstadoSensor ([FromBody] CambiarEstadoSensorDTO dto) {
+      var resultado = await _sensorService.CambiarEstadoSensorAsync (dto.SensorId, dto.Estado);
+
+      if (!resultado)
+        return NotFound (new { mensaje = "Sensor no encontrado o no se modificó el estado." });
+
+      return Ok (new { mensaje = "Estado actualizado correctamente." });
+    }
 
 
   }
