@@ -68,7 +68,7 @@ namespace InvernaderoInteligente.Controllers
             return Ok(resultado);
         }
 
-
+        
 
 
 

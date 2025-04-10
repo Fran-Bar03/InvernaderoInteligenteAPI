@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{B5ECA318-2919-4FD3-B718-C0C128D125A8}|InvernaderoInteligente\\InvernaderoInteligente.csproj|solutionrelative:invernaderointeligente\\controllers\\invernaderocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B5ECA318-2919-4FD3-B718-C0C128D125A8}|InvernaderoInteligente\\InvernaderoInteligente.csproj|c:\\users\\hachi\\onedrive\\desktop\\invernaderointeligenteapi\\invernaderointeligente\\controllers\\lecturasensorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5ECA318-2919-4FD3-B718-C0C128D125A8}|InvernaderoInteligente\\InvernaderoInteligente.csproj|solutionrelative:invernaderointeligente\\controllers\\lecturasensorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{772BE2F5-0ECE-468F-825E-1367CAE213A2}|InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj|c:\\users\\hachi\\onedrive\\desktop\\invernaderointeligenteapi\\invernaderointeligente.data\\services\\invernaderoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{772BE2F5-0ECE-468F-825E-1367CAE213A2}|InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj|solutionrelative:invernaderointeligente.data\\services\\invernaderoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -45,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{80D49010-2095-447A-848D-DD28242FDB6E}|InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj|c:\\users\\hachi\\onedrive\\desktop\\invernaderointeligenteapi\\invernaderointeligente.model\\sensormodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{80D49010-2095-447A-848D-DD28242FDB6E}|InvernaderoInteligente.Model\\InvernaderoInteligente.Model.csproj|solutionrelative:invernaderointeligente.model\\sensormodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B5ECA318-2919-4FD3-B718-C0C128D125A8}|InvernaderoInteligente\\InvernaderoInteligente.csproj|c:\\users\\hachi\\onedrive\\desktop\\invernaderointeligenteapi\\invernaderointeligente\\controllers\\lecturasensorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B5ECA318-2919-4FD3-B718-C0C128D125A8}|InvernaderoInteligente\\InvernaderoInteligente.csproj|solutionrelative:invernaderointeligente\\controllers\\lecturasensorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{772BE2F5-0ECE-468F-825E-1367CAE213A2}|InvernaderoInteligente.Data\\InvernaderoInteligente.Data.csproj|c:\\users\\hachi\\onedrive\\desktop\\invernaderointeligenteapi\\invernaderointeligente.data\\services\\lecturasensorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -145,11 +145,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "SensorController.cs",
               "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\Controllers\\SensorController.cs",
               "RelativeDocumentMoniker": "InvernaderoInteligente\\Controllers\\SensorController.cs",
@@ -158,25 +158,11 @@
               "ViewState": "AgIAADUAAAAAAAAAAAAiwEcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T01:56:31.194Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InvernaderoModel.cs",
-              "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoModel.cs",
-              "RelativeDocumentMoniker": "InvernaderoInteligente.Model\\InvernaderoModel.cs",
-              "ToolTip": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoModel.cs",
-              "RelativeToolTip": "InvernaderoInteligente.Model\\InvernaderoModel.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T01:26:01.233Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -186,14 +172,14 @@
               "RelativeDocumentMoniker": "InvernaderoInteligente\\Controllers\\InvernaderoController.cs",
               "ToolTip": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\Controllers\\InvernaderoController.cs",
               "RelativeToolTip": "InvernaderoInteligente\\Controllers\\InvernaderoController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEAAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAowGUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T00:19:18.827Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "SensorService.cs",
               "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\Services\\SensorService.cs",
               "RelativeDocumentMoniker": "InvernaderoInteligente.Data\\Services\\SensorService.cs",
@@ -201,12 +187,11 @@
               "RelativeToolTip": "InvernaderoInteligente.Data\\Services\\SensorService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T05:07:20.596Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T05:07:20.596Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "SensorLecturaDTO.cs",
               "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\DTOs\\SensorLecturaDTO.cs",
               "RelativeDocumentMoniker": "InvernaderoInteligente.Data\\DTOs\\SensorLecturaDTO.cs",
@@ -218,7 +203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "SensorModel.cs",
               "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\SensorModel.cs",
               "RelativeDocumentMoniker": "InvernaderoInteligente.Model\\SensorModel.cs",
@@ -230,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "InvernaderoDTO.cs",
               "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\DTOs\\InvernaderoDTO.cs",
               "RelativeDocumentMoniker": "InvernaderoInteligente.Data\\DTOs\\InvernaderoDTO.cs",
@@ -242,7 +227,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "CrearUsuarioDTO.cs",
               "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\DTOs\\CrearUsuarioDTO.cs",
               "RelativeDocumentMoniker": "InvernaderoInteligente.Data\\DTOs\\CrearUsuarioDTO.cs",
@@ -254,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\Program.cs",
               "RelativeDocumentMoniker": "InvernaderoInteligente\\Program.cs",
@@ -266,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "InvernaderoService.cs",
               "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\Services\\InvernaderoService.cs",
               "RelativeDocumentMoniker": "InvernaderoInteligente.Data\\Services\\InvernaderoService.cs",
@@ -274,12 +259,11 @@
               "RelativeToolTip": "InvernaderoInteligente.Data\\Services\\InvernaderoService.cs",
               "ViewState": "AgIAALAAAAAAAAAAAAAgwMoAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T09:48:32.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T09:48:32.651Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
               "Title": "LecturaSensorController.cs",
               "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente\\Controllers\\LecturaSensorController.cs",
               "RelativeDocumentMoniker": "InvernaderoInteligente\\Controllers\\LecturaSensorController.cs",
@@ -287,7 +271,20 @@
               "RelativeToolTip": "InvernaderoInteligente\\Controllers\\LecturaSensorController.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAQwCMAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T22:39:42.287Z"
+              "WhenOpened": "2025-04-07T22:39:42.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InvernaderoModel.cs",
+              "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoModel.cs",
+              "RelativeDocumentMoniker": "InvernaderoInteligente.Model\\InvernaderoModel.cs",
+              "ToolTip": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Model\\InvernaderoModel.cs",
+              "RelativeToolTip": "InvernaderoInteligente.Model\\InvernaderoModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T01:26:01.233Z"
             },
             {
               "$type": "Document",
@@ -303,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CambiarEstadoSensorDTO.cs",
               "DocumentMoniker": "C:\\Users\\Hachi\\OneDrive\\Desktop\\InvernaderoInteligenteAPI\\InvernaderoInteligente.Data\\DTOs\\CambiarEstadoSensorDTO.cs",
               "RelativeDocumentMoniker": "InvernaderoInteligente.Data\\DTOs\\CambiarEstadoSensorDTO.cs",
