@@ -11,3 +11,16 @@ C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\ob
 C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\refint\InvernaderoInteligente.Model.dll
 C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\InvernaderoInteligente.Model.pdb
 C:\Users\Ju4nM\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\ref\InvernaderoInteligente.Model.dll
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\bin\Debug\net8.0\InvernaderoInteligente.Model.deps.json
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\bin\Debug\net8.0\InvernaderoInteligente.Model.dll
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\bin\Debug\net8.0\InvernaderoInteligente.Model.pdb
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\InvernaderoInteligente.Model.csproj.AssemblyReference.cache
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\InvernaderoInteligente.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\InvernaderoInteligente.Model.AssemblyInfoInputs.cache
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\InvernaderoInteligente.Model.AssemblyInfo.cs
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\InvernaderoInteligente.Model.csproj.CoreCompileInputs.cache
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\InvernaderoInteligente.Model.sourcelink.json
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\InvernaderoInteligente.Model.dll
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\refint\InvernaderoInteligente.Model.dll
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\InvernaderoInteligente.Model.pdb
+C:\Users\Hachi\OneDrive\Desktop\InvernaderoInteligenteAPI\InvernaderoInteligente.Model\obj\Debug\net8.0\ref\InvernaderoInteligente.Model.dll
